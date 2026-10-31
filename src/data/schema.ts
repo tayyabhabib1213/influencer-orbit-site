@@ -13,6 +13,11 @@ export const ABOUT_FACT =
   `and coordinates ${PROOF.shipmentsPerMonth} product shipments a month, with clients across the US, UK and EU and creators across ${PROOF.creatorMarkets}. ` +
   `Its confirm-first method gets ${PROOF.postRate} of gifted creators to post, against ${PROOF.coldGiftingPostRate} for typical cold gifting.`;
 
+// Short version for the footer of every page (same wording everywhere).
+export const ABOUT_SHORT =
+  `Influencer Orbit is a creator seeding operation for US DTC skincare, cosmetics and beauty brands, founded by ${SITE.founder.name}. ` +
+  `It runs confirm-first gifted seeding, UGC for ads, paid creator collabs and Spark Ads on Instagram, TikTok and YouTube.`;
+
 export function organization() {
   return {
     '@context': 'https://schema.org',
