@@ -21,19 +21,21 @@ const months = estherMonths();
 >
   <!-- 1. Hero -->
   <section class="hero" aria-labelledby="hero-title">
-    <div class="container hero__grid">
-      <div>
-        <p class="eyebrow">The creator seeding operation for beauty brands</p>
-        <h1 id="hero-title" class="display-hero">We help US skincare and beauty brands get 50 to 150+ real creator posts every month, <em>guaranteed by day 60</em>, without hiring an influencer team.</h1>
-        <p class="lead">With the Orbit Seeding Engine, every creator confirms before a single unit ships. You approve a brief and ship from your own warehouse. We find, vet, confirm and follow up until every post is live.</p>
-        <CtaButtons micro="See the live tracker and a real monthly report before you commit to anything." />
-        <div class="hero__proof">
-          <span>Running Esther Formula’s seeding since {PROOF.estherSince}</span>
-          <span class="hero__platforms" role="img" aria-label="Platforms: Instagram, TikTok, YouTube"><Brand name="instagram" decorative /><Brand name="tiktok" decorative /><Brand name="youtube" decorative /></span>
+    <div class="container">
+      <p class="eyebrow">The creator seeding operation for beauty brands</p>
+      <h1 id="hero-title" class="display-hero">We help US skincare and beauty brands get 50 to 150+ real creator posts every month, <em>guaranteed by day 60</em>, without hiring an influencer team.</h1>
+      <div class="hero__grid">
+        <div class="hero__copy">
+          <p class="lead">With the Orbit Seeding Engine, every creator confirms before a single unit ships. You approve a brief and ship from your own warehouse. We find, vet, confirm and follow up until every post is live.</p>
+          <CtaButtons micro="See the live tracker and a real monthly report before you commit to anything." />
+          <div class="hero__proof">
+            <span>Running Esther Formula’s seeding since {PROOF.estherSince}</span>
+            <span class="hero__platforms" role="img" aria-label="Platforms: Instagram, TikTok, YouTube"><Brand name="instagram" decorative /><Brand name="tiktok" decorative /><Brand name="youtube" decorative /></span>
+          </div>
         </div>
-      </div>
-      <div class="reveal">
-        <Tracker />
+        <div class="hero__visual">
+          <Tracker />
+        </div>
       </div>
     </div>
   </section>
@@ -45,7 +47,6 @@ const months = estherMonths();
   <section class="section" aria-labelledby="problem-title">
     <div class="container split split--top">
       <div>
-        <p class="eyebrow">Why seeding stalls</p>
         <h2 id="problem-title" class="display-lg">You didn’t build a skincare brand to chase creators who never post.</h2>
       </div>
       <div class="prose">
@@ -75,7 +76,6 @@ const months = estherMonths();
   <section class="section" id="how-it-works" aria-labelledby="how-title">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">How it works</p>
         <h2 id="how-title" class="display-lg">The Orbit Seeding Engine runs in four steps.</h2>
         <p class="lead">One rule runs through all of them: no creator gets product until they confirm. That single change is why 70%+ of our creators post, against 30% to 50% for cold gifting.</p>
       </div>
@@ -110,7 +110,6 @@ const months = estherMonths();
   <section class="section section--white" aria-labelledby="fit-title">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Who it’s for</p>
         <h2 id="fit-title" class="display-lg">Built for founders who think in <em>cost per post</em>.</h2>
         <p class="lead">This is for you if you run a US DTC skincare, cosmetics or beauty brand and you:</p>
       </div>
@@ -162,7 +161,6 @@ const months = estherMonths();
     <div class="container">
       <div class="proof-card reveal">
         <div>
-          <p class="eyebrow">Results</p>
           <h2 id="proof-title" class="display-lg"><span data-months>{months}</span> months. Same client. Here’s what that looks like.</h2>
           <img class="proof-card__logo mt-8" src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" loading="lazy" />
           <p>We’ve run the creator seeding operation for Esther Formula, a Korean skincare and beauty supplement brand, since January 2024.</p>
@@ -186,7 +184,6 @@ const months = estherMonths();
   <section class="section section--white" aria-labelledby="price-title">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">Pricing</p>
         <h2 id="price-title" class="display-lg">Priced per program. Measured per post.</h2>
         <p class="lead">One offer in three tiers, from $1,500 a month. Every tier starts with a 60-day pilot, then runs month to month.</p>
       </div>
@@ -223,8 +220,7 @@ const months = estherMonths();
   <section class="section section--white" aria-labelledby="compare-title">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">How it compares</p>
-        <h2 id="compare-title" class="display-lg">Influencer Orbit vs. an in-house hire vs. a typical agency</h2>
+        <h2 id="compare-title" class="display-lg">Influencer Orbit vs. an in&#8209;house hire vs. a typical agency</h2>
       </div>
       <div class="table-wrap" tabindex="0" role="region" aria-labelledby="compare-title">
         <table class="data-table">
@@ -250,7 +246,6 @@ const months = estherMonths();
         </picture>
       </div>
       <div class="prose">
-        <p class="eyebrow">From the founder</p>
         <h2 id="founder-title" class="display-lg">Hi, I’m Tayyab, founder of Influencer Orbit.</h2>
         <p class="mt-6">After running influencer work for 100+ brands, I noticed the same thing in almost every gifting program: product went out, half the creators never posted, and nobody followed up.</p>
         <p>That’s why we built the Orbit Seeding Engine, a confirm-first seeding operation with one job: real creator posts, every month, at volume.</p>
@@ -265,7 +260,6 @@ const months = estherMonths();
   <section class="section section--white" aria-labelledby="faq-title">
     <div class="container">
       <div class="section-head">
-        <p class="eyebrow">FAQ</p>
         <h2 id="faq-title" class="display-lg">Questions founders ask before booking</h2>
       </div>
       <Faq items={HOME_FAQS} />

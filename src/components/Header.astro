@@ -5,7 +5,7 @@ const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/'
 const isCurrent = (href: string) => !href.includes('#') && href === path;
 ---
 <div class="announce">
-  Your competitor’s TikTok isn’t an accident. <a href="/case-studies">See how we run 50 to 200 creator posts a month →</a>
+  <span class="announce__lead">Your competitor’s TikTok isn’t an accident.</span> <a href="/case-studies">See how we run 50 to 200 creator posts a month →</a>
 </div>
 <header class="site-header" data-header>
   <div class="container site-header__bar">
