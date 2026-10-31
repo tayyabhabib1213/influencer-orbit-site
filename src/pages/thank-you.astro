@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../data/site';
+---
+<BaseLayout title="Thanks · Influencer Orbit" description="Thanks for getting in touch with Influencer Orbit. We reply within one business day." path="/thank-you" noindex stickyCta={false}>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Received</p>
+      <h1 class="display-xl">Got it. <em>We’ll reply within one business day.</em></h1>
+      <p class="lead">While you wait, here’s how we run 50 to 200 creator posts a month for Esther Formula.</p>
+      <div class="cta-group">
+        <a class="btn btn--primary" href="/case-studies">Read the case studies</a>
+        <a class="btn btn--secondary" href={SITE.calendly} target="_blank" rel="noopener" data-cta="thank-you-book"><Icon name="calendar" />Or book a time now</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

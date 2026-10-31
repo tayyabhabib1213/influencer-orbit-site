@@ -1,0 +1,16 @@
+{
+  "name": "influencer-orbit-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Marketing website for Influencer Orbit, the creator seeding operation for US beauty brands.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check:links": "node scripts/check-links.mjs dist"
+  },
+  "dependencies": {
+    "astro": "5.18.2"
+  }
+}

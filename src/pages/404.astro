@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaButtons from '../components/CtaButtons.astro';
+---
+<BaseLayout title="Page not found · Influencer Orbit" description="This page doesn’t exist. Head back to Influencer Orbit, the creator seeding operation for US beauty brands." path="/404" noindex>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1 class="display-xl">This post never went live.</h1>
+      <p class="lead">The page you were looking for doesn’t exist or has moved. Here’s where most people go next.</p>
+      <ul class="checks">
+        <li><a href="/">Home</a></li>
+        <li><a href="/creator-seeding">How the Seeding Engine works and pricing</a></li>
+        <li><a href="/case-studies">Esther Formula case studies</a></li>
+      </ul>
+      <CtaButtons />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,13 @@
+---
+import Icon from './Icon.astro';
+import { CTA } from '../data/site';
+interface Props { secondary?: boolean; micro?: string | false; dark?: boolean; secondaryLabel?: string; secondaryHref?: string; primaryLabel?: string }
+const { secondary = true, micro = CTA.microcopy, dark = false, secondaryLabel = CTA.secondary, secondaryHref = '/competitor-audit', primaryLabel = CTA.primary } = Astro.props;
+---
+<div>
+  <div class="cta-group">
+    <a class={`btn ${dark ? 'btn--on-dark' : 'btn--primary'}`} href="/book" data-cta="primary"><Icon name="calendar" />{primaryLabel}</a>
+    {secondary && <a class={`btn ${dark ? 'btn--ghost-dark' : 'btn--secondary'}`} href={secondaryHref} data-cta="secondary">{secondaryLabel}</a>}
+  </div>
+  {micro && <p class="cta-micro" set:html={micro} />}
+</div>

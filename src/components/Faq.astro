@@ -1,0 +1,14 @@
+---
+import Icon from './Icon.astro';
+import { fill, type Faq } from '../data/content';
+interface Props { items: Faq[]; headingLevel?: 'h3' | 'h4' }
+const { items } = Astro.props;
+---
+<div class="faq">
+  {items.map((f) => (
+    <details>
+      <summary><span>{fill(f.q)}</span><Icon name="chevron-down" /></summary>
+      <div class="faq__a"><p>{fill(f.a)}</p></div>
+    </details>
+  ))}
+</div>

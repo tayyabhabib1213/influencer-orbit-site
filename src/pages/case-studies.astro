@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CreatorGrid from '../components/CreatorGrid.astro';
+import Tracker from '../components/Tracker.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { SITE, CTA, PROOF, PENDING, estherMonths } from '../data/site';
+import { CASE_FAQS } from '../data/content';
+import { breadcrumb, faqPage, article } from '../data/schema';
+const months = estherMonths();
+const crumbs = [{ name: 'Case studies', path: '/case-studies' }];
+const today = new Date().toISOString().slice(0, 10);
+const art = article({
+  headline: `Esther Formula: ${months} months of confirm-first creator seeding`,
+  description: 'How Influencer Orbit runs Esther Formula’s creator seeding operation: 2,000+ creator collaborations and 50 to 200 posts a month since January 2024.',
+  path: '/case-studies',
+  datePublished: '2026-11-01',
+  dateModified: today,
+  image: '/images/og/default.png'
+});
+---
+<BaseLayout
+  title="Esther Formula Case Study · 2,000+ Creator Collabs"
+  description="Skincare influencer marketing case study: 50 to 200 creator posts a month for Esther Formula since January 2024, with no in-house influencer manager."
+  path="/case-studies"
+  schema={[breadcrumb(crumbs), faqPage(CASE_FAQS), art]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <p class="eyebrow">Case studies</p>
+      <h1 class="display-xl">One beauty brand. <span data-months>{months}</span> months. <em>2,000+ creator collaborations.</em></h1>
+      <p class="lead">We kept our proof deep, not wide. Here’s what running one brand’s creator seeding operation every month since January 2024 looks like, told as the three problems it solved.</p>
+      <div class="chipline">
+        <span><span data-months>{months}</span> months</span><span>2,000+ collaborations</span><span>{PROOF.totalPosts} posts live</span><span>50–200 posts/month</span><span>200+ shipments/month</span><span>70%+ post rate</span><span>0 influencer managers hired</span>
+      </div>
+      <p class="story__byline">By {SITE.founder.name}, Founder · Client: Esther Formula, Korean skincare and beauty supplements · Creators across the US, Southeast Asia, the UK, Australia and the UAE</p>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-label="Case studies">
+    <div class="container stack">
+      <img src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" style="width:200px" loading="lazy" />
+
+      <details class="story" open>
+        <summary>
+          <span class="story__num">War story 1</span>
+          <h2 class="story__title">The boxes that never posted: how one rule fixed Esther Formula’s post rate.</h2>
+          <span class="chipline"><span>Confirm-first since Jan 2024</span><span>70%+ post rate vs 30–50% cold gifting</span></span>
+          <span class="story__toggle"><span class="when-closed">Read the story</span><span class="when-open">Close</span><Icon name="chevron-down" /></span>
+        </summary>
+        <div class="story__body">
+          <div>
+            <h3>The situation</h3>
+            <p>Esther Formula, a Korean skincare and beauty supplement brand, needed creator posts at volume across several markets. Like most gifting programs, the default playbook was to ship product and hope. That model loses half or more of its boxes: only 30% to 50% of gifted creators typically post (<a href="https://blog.hypeauditor.com/how-to-get-influencers-to-post-about-your-brand-during-a-gifting-campaign/" target="_blank" rel="noopener">HypeAuditor</a>).</p>
+            <h3>What we built</h3>
+            <p>One structural change before anything else: no creator gets product until they confirm. Confirmed addresses go to the warehouse daily, and every shipment is tracked to a post link, not a screenshot.</p>
+            <h3>The result</h3>
+            <p>Product stopped disappearing into silence. The confirmation step is why the post rate climbed to 70%+, against 30% to 50% for cold gifting, and it’s the rule every wave has run on for <span data-months>{months}</span> months.</p>
+          </div>
+          <div>
+            <Tracker />
+          </div>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary>
+          <span class="story__num">War story 2</span>
+          <h2 class="story__title">Volume without a hire: 50 to 200 posts a month, with no influencer manager on payroll.</h2>
+          <span class="chipline"><span>{PROOF.totalPosts} posts live</span><span>2,000+ collaborations</span><span>200+ shipments a month</span><span>0 hires</span></span>
+          <span class="story__toggle"><span class="when-closed">Read the story</span><span class="when-open">Close</span><Icon name="chevron-down" /></span>
+        </summary>
+        <div class="story__body">
+          <div>
+            <h3>The situation</h3>
+            <p>Hitting 50 to 200 posts a month by hand would take a full-time coordinator (about $61K a year in the US) plus software. It would also put the whole program at risk the day that person left.</p>
+            <h3>What we built</h3>
+            <p>A repeatable monthly operation: creator research, hand-vetting, outreach, confirmation, shipping coordination and follow-up to live, run by our team on a defined system. The brand’s only jobs are approving briefs and shipping.</p>
+            <h3>The result</h3>
+            <p>{PROOF.totalPosts} creator posts live from 2,000+ creator collaborations, with 200+ coordinated shipments a month, month after month since January 2024. Esther Formula has never hired an in-house influencer manager.</p>
+          </div>
+          <div>
+            <div class="card card--ink"><p class="mono" style="font-size:13px;color:var(--text-on-dark-muted);margin:0">Creator posts live, Jan 2024 to today</p><p style="font:400 72px/1 var(--font-mono);letter-spacing:-.02em;color:#fff;margin:12px 0 16px">{PROOF.totalPosts}</p><ul class="checks" style="margin:0"><li><Icon name="check" /><span>2,000+ creator collaborations</span></li><li><Icon name="check" /><span>50 to 200 posts live every month</span></li><li><Icon name="check" /><span>70%+ post rate under confirm-first</span></li><li><Icon name="check" /><span>0 influencer managers hired</span></li></ul></div>
+          </div>
+        </div>
+      </details>
+
+      <details class="story">
+        <summary>
+          <span class="story__num">War story 3</span>
+          <h2 class="story__title">From posts to a creator asset: a UGC pipeline and a roster the brand owns.</h2>
+          <span class="chipline"><span>VIP Creator Roster</span><span>Repeat seeding + paid collabs</span><span>Monthly ad-ready UGC</span></span>
+          <span class="story__toggle"><span class="when-closed">Read the story</span><span class="when-open">Close</span><Icon name="chevron-down" /></span>
+        </summary>
+        <div class="story__body">
+          <div>
+            <h3>The situation</h3>
+            <p>Posts that sit in a spreadsheet are wasted twice. They don’t feed the ad account, and the best creators get treated like strangers next month.</p>
+            <h3>What we built</h3>
+            <p>Top performers moved to a VIP roster for repeat seeding and paid collabs, and the strongest posts were flagged as ad-ready UGC every month. The program also narrowed over time from supplements and some cosmetics to a tighter product focus, sharpening which creators fit.</p>
+            <h3>The result</h3>
+            <p>The brand gets a growing roster of proven creators and a monthly supply of ad-ready posts. Every creator contact and content link sits in a tracker the brand owns.</p>
+          </div>
+          <div>
+            <CreatorGrid count={9} />
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="gallery-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">The work</p>
+        <h2 id="gallery-title" class="display-lg">Real creator posts from the program</h2>
+      </div>
+      <CreatorGrid count={12} wide />
+    </div>
+  </section>
+
+  {PENDING.estherTestimonial && (
+  <section class="section section--white" aria-labelledby="quote-title">
+    <div class="container">
+      <h2 id="quote-title" class="sr-only">Client testimonial</h2>
+      <blockquote class="testimonial"><p class="pull">“{PENDING.estherTestimonial.quote}”</p><footer class="small">— {PENDING.estherTestimonial.name}, {PENDING.estherTestimonial.title}, Esther Formula</footer></blockquote>
+    </div>
+  </section>
+  )}
+
+  <section class="section" aria-labelledby="pilot-title">
+    <div class="container">
+      <div class="proof-card">
+        <div>
+          <p class="eyebrow">Pilot slot</p>
+          <h2 id="pilot-title" class="display-lg">Your brand could be case study #2.</h2>
+        </div>
+        <div>
+          <p>We’re looking for one Shopify-native US skincare brand doing $1M to $3M a year to run the Orbit Seeding Engine as a named case study, with month-by-month post counts published. Ask about founding-client terms on the walkthrough.</p>
+          <a class="btn btn--primary mt-6" href="/book" data-cta="pilot-slot"><Icon name="calendar" />Apply on a {SITE.callLength} walkthrough</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="faq-title">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="faq-title" class="display-md">Questions about the Esther Formula program</h2>
+      </div>
+      <Faq items={CASE_FAQS} />
+    </div>
+  </section>
+
+  <FinalCta
+    title="Want to see it live instead of reading about it?"
+    text="On the walkthrough we open the real Esther Formula tracker (redacted) and the monthly report you’d receive."
+    primaryLabel="See the live tracker"
+    secondary={false}
+    micro={false}
+  />
+</BaseLayout>

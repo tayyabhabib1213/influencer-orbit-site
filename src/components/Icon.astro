@@ -1,0 +1,9 @@
+---
+// Lucide icon, 24px grid, 1.75 stroke. Decorative unless a label is given.
+import { icons } from '../data/icons';
+interface Props { name: string; label?: string; class?: string }
+const { name, label, class: cls = 'icon' } = Astro.props;
+const body = icons[name];
+if (!body) throw new Error(`Unknown icon: ${name}`);
+---
+<svg class={cls} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" {...(label ? { role: 'img', 'aria-label': label } : { 'aria-hidden': 'true', focusable: 'false' })} set:html={body} />

@@ -1,0 +1,15 @@
+---
+import CtaButtons from './CtaButtons.astro';
+interface Props { title: string; text?: string; micro?: string | false; secondary?: boolean; secondaryLabel?: string; primaryLabel?: string }
+const { title, text, micro, secondary = true, secondaryLabel, primaryLabel } = Astro.props;
+---
+<section class="section" aria-labelledby="final-cta-title">
+  <div class="container">
+    <div class="final-cta reveal">
+      <svg class="final-cta__orbit" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#D8E8FF" stroke-width="1.2"><ellipse cx="200" cy="200" rx="190" ry="70" transform="rotate(-20 200 200)"/><ellipse cx="200" cy="200" rx="140" ry="50" transform="rotate(-20 200 200)"/></g><circle cx="368" cy="140" r="12" fill="#FF5C35"/></svg>
+      <h2 id="final-cta-title" class="display-lg" set:html={title} />
+      {text && <p>{text}</p>}
+      <div class="mt-8"><CtaButtons dark secondary={secondary} micro={micro} secondaryLabel={secondaryLabel} primaryLabel={primaryLabel} /></div>
+    </div>
+  </div>
+</section>

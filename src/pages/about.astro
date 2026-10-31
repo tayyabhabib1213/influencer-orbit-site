@@ -1,0 +1,158 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import FinalCta from '../components/FinalCta.astro';
+import { SITE, PENDING, estherMonths } from '../data/site';
+import { REVIEWS } from '../data/content';
+import { breadcrumb, person } from '../data/schema';
+const months = estherMonths();
+const crumbs = [{ name: 'About', path: '/about' }];
+const rules = [
+  ['shield-check', 'Pre-confirm everything', 'No product ships without a creator confirmation. No guarantee goes unwritten.'],
+  ['target', 'Volume isn’t optional', 'Every tier has a post floor. We report posts against target first, every month.'],
+  ['handshake', 'You own everything', 'Every creator contact, content link and the tracker stay yours, even if you leave.'],
+  ['layers', 'Category depth', 'US beauty only. That’s why the Competitor Creator Audit is accurate.'],
+  ['eye', 'Transparency is the deliverable', 'A live tracker from day one. You verify, you don’t trust blindly.']
+];
+---
+<BaseLayout
+  title="About Influencer Orbit · The Creator Seeding Operation"
+  description="Not an influencer agency. A confirm-first creator seeding operation built only for US beauty brands, founded by Tayyab Habib."
+  path="/about"
+  schema={[breadcrumb(crumbs), person()]}
+>
+  <section class="page-hero">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <p class="eyebrow">About Influencer Orbit</p>
+      <h1 class="display-xl">We’re not an influencer agency. <em>We’re a creator seeding operation.</em></h1>
+      <p class="lead">Agencies sell campaigns. Marketplaces sell access to a creator pool. Software sells a dashboard someone still has to run. We run the operation: 50 to 150+ confirmed creator posts every month for US beauty brands, guaranteed.</p>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="pov-title">
+    <div class="container split split--top">
+      <div>
+        <p class="eyebrow">Our point of view</p>
+        <h2 id="pov-title" class="display-lg">Creator seeding isn’t broken. Sending product and hoping is.</h2>
+      </div>
+      <div class="prose">
+        <p class="pull">Most creator programs don’t fail because of the wrong creators or the wrong strategy. They fail on operations: boxes ship, nobody follows up, and half the product never turns into a post.</p>
+        <p>Most brands run gifting like this: find some creators, ship boxes, wait. Then 30% to 50% of them post (<a href="https://blog.hypeauditor.com/how-to-get-influencers-to-post-about-your-brand-during-a-gifting-campaign/" target="_blank" rel="noopener">HypeAuditor</a>), and someone loses a week chasing the rest.</p>
+        <p>We saw that pattern over and over and asked why. The answer was structural. Nobody confirmed before shipping, and nobody followed up until the post was live.</p>
+        <p>So we built the operation around one rule: <strong>no creator gets product until they confirm.</strong> Everything else we do (the audit, the vetting, the tracker, the VIP roster) sits on top of that rule.</p>
+        <p class="pull pull--mono mt-8">“The brands that win creator distribution aren’t the ones with the biggest budgets. They’re the ones with the most disciplined operations.”</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="story-title">
+    <div class="container founder">
+      <div>
+        <div class="founder__photo">
+          <picture>
+            <source type="image/avif" srcset="/images/brand/tayyab-habib-480.avif 480w, /images/brand/tayyab-habib-800.avif 800w" sizes="(min-width: 1024px) 380px, 90vw" />
+            <img src="/images/brand/tayyab-habib-800.webp" srcset="/images/brand/tayyab-habib-480.webp 480w, /images/brand/tayyab-habib-800.webp 800w" sizes="(min-width: 1024px) 380px, 90vw" width="800" height="800" alt="Tayyab Habib, founder of Influencer Orbit" loading="lazy" />
+          </picture>
+        </div>
+        <ul class="contact-list mt-6">
+          <li><Icon name="user-check" /><span><strong>{SITE.founder.name}</strong>, Founder</span></li>
+          <li><a class="text-link" href={SITE.founder.linkedin} target="_blank" rel="noopener">Connect on LinkedIn <Icon name="arrow-up-right" /></a></li>
+        </ul>
+      </div>
+      <div class="prose">
+        <p class="eyebrow">Founder story</p>
+        <h2 id="story-title" class="display-lg">Built from execution, not a pitch deck.</h2>
+        {PENDING.founderStory && <p class="mt-6">{PENDING.founderStory}</p>}
+        <p class="mt-6">In January 2024, Esther Formula, a Korean skincare and beauty supplement brand, needed 50 to 200 creator posts a month. That’s more than their team could reach while also running the business. We built the confirm-first system for them, and it is still running <span data-months>{months}</span> months later: 2,000+ creator collaborations, 200+ shipments coordinated a month, and no in-house influencer manager ever hired.</p>
+        <p>We chose to go deep with one brand instead of touching dozens once. That depth is the reason we know which creators actually have skincare audiences, which hooks work for retinol versus glutathione, and which claims get content pulled.</p>
+        <p class="founder__sign">— Tayyab Habib, Founder</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="depth-title">
+    <div class="container split split--top">
+      <div>
+        <p class="eyebrow">Why only US beauty</p>
+        <h2 id="depth-title" class="display-lg">Category depth over category breadth.</h2>
+      </div>
+      <div class="prose">
+        <p>We work only with US DTC skincare, cosmetics and beauty brands. Not food, not fitness, not fashion. The creators can be anywhere your customers are: we’ve run seeding with creators across the US, Southeast Asia, the UK, Australia and the UAE. Creator vetting in beauty means knowing which nano-creators have real skincare audiences and which are lifestyle accounts that happen to use serum. That knowledge only builds inside one category, so we decline brands outside it, whatever the budget.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="rules-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">How we operate</p>
+        <h2 id="rules-title" class="display-lg">Five rules we run on.</h2>
+      </div>
+      <div class="grid grid--3">
+        {rules.map(([icon, title, text]) => (
+          <div class="card reveal"><span class="icon-tile"><Icon name={icon} /></span><h3 class="heading-sm">{title}</h3><p>{text}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="team-title">
+    <div class="container split split--top">
+      <div>
+        <p class="eyebrow">The team</p>
+        <h2 id="team-title" class="display-lg">A four-person operations team, built for volume.</h2>
+      </div>
+      <div class="prose">
+        <p>I handle strategy and every client conversation. Our team runs creator research, outreach, shipping coordination and post tracking.</p>
+        <p><strong>Remote, by design.</strong> We’re a fully remote team based in Pakistan. You get a live tracker you can check any time, and a one-business-day response commitment over email, Slack or WhatsApp, written into every engagement. Esther Formula has worked with us this way for <span data-months>{months}</span> months.</p>
+        <div class="chips">
+          <span class="chip"><Icon name="users" />4 people</span>
+          <span class="chip"><Icon name="globe" />Fully remote</span>
+          <span class="chip"><Icon name="clock" />Reply within one business day</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="diff-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">Why we’re different</p>
+        <h2 id="diff-title" class="display-lg">They sell. We run.</h2>
+      </div>
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="diff-title">
+        <table class="data-table" style="min-width:520px">
+          <thead><tr><th scope="col">They sell</th><th scope="col" class="is-us">We run</th></tr></thead>
+          <tbody>
+            <tr><td>One campaign, one invoice</td><td class="is-us">A monthly seeding operation that compounds</td></tr>
+            <tr><td>Reach and “estimated impressions”</td><td class="is-us">Posts against target, in writing</td></tr>
+            <tr><td>Their creator pool</td><td class="is-us">Creators hand-vetted for your customer</td></tr>
+            <tr><td>Relationships they keep</td><td class="is-us">A roster and tracker you keep</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="reviews-title">
+    <div class="container">
+      <div class="section-head">
+        <p class="eyebrow">What clients say</p>
+        <h2 id="reviews-title" class="display-lg">On time, easy to work with, and worth hiring again.</h2>
+        <p class="muted">Verified reviews from clients Tayyab has worked with, quoted word for word.</p>
+      </div>
+      <div class="grid grid--3">
+        {REVIEWS.map((r) => <ReviewCard {...r} />)}
+      </div>
+    </div>
+  </section>
+
+  <FinalCta
+    title="See the operation running before you decide."
+    micro="We’ll show you the live Esther Formula tracker and the monthly report you’d receive."
+    secondary={false}
+  />
+</BaseLayout>

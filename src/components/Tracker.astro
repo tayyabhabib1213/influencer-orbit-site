@@ -1,0 +1,40 @@
+---
+// Sample tracker. Illustrative data only: keep the note visible wherever this appears.
+import Icon from './Icon.astro';
+import Brand from './Brand.astro';
+const rows = [
+  ['tiktok', '18.2K', 'live', 'Oct 03', '41.6K', 96], ['instagram', '9.7K', 'live', 'Oct 04', '12.9K', 72],
+  ['tiktok', '52.4K', 'live', 'Oct 06', '88.3K', 110], ['youtube', '31.0K', 'live', 'Oct 07', '24.1K', 84],
+  ['tiktok', '6.3K', 'shipped', 'Oct 09', '—', 64], ['instagram', '14.8K', 'shipped', 'Oct 10', '—', 120],
+  ['tiktok', '23.5K', 'confirmed', 'Oct 11', '—', 90], ['instagram', '11.2K', 'confirmed', 'Oct 12', '—', 78]
+] as const;
+const pill = { live: ['circle-play', 'Live'], shipped: ['truck', 'Shipped'], confirmed: ['circle-check', 'Confirmed'] } as const;
+---
+<section class="tracker" aria-label="Sample live tracker with illustrative data">
+  <div class="tracker__bar">
+    <div class="tracker__title"><span class="tracker__dot" aria-hidden="true"></span>Live tracker <small>· sample brand · October</small></div>
+    <div class="tracker__counter"><b>64</b><span>/ 100 posts live this month</span></div>
+  </div>
+  <div class="tracker__progress" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" aria-label="Posts live against monthly target, sample data"><i style="width:64%"></i></div>
+  <div class="tracker__summary">
+    <div><strong>118</strong>confirmed</div><div><strong>97</strong>shipped</div><div><strong>64</strong>live</div><div><strong>1.9M</strong>views</div>
+  </div>
+  <div class="tracker__scroll" tabindex="0" role="region" aria-label="Sample tracker table">
+    <table>
+      <thead><tr><th scope="col">Creator</th><th scope="col">Platform</th><th scope="col" class="hide-sm">Followers</th><th scope="col">Status</th><th scope="col" class="hide-sm">Updated</th><th scope="col">Views</th></tr></thead>
+      <tbody>
+        {rows.map(([p, f, s, d, v, w]) => (
+          <tr>
+            <td><div class="creator"><span class="creator__avatar"></span><span class="redact" style={`width:${w}px`}></span><span class="sr-only">Creator handle hidden</span></div></td>
+            <td><Brand name={p} /></td>
+            <td class="num hide-sm">{f}</td>
+            <td><span class={`pill pill--${s}`}><Icon name={pill[s][0]} />{pill[s][1]}</span></td>
+            <td class="num hide-sm">{d}</td>
+            <td class="num">{v}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="tracker__note">Illustrative sample. Real client trackers are shown, redacted, on the walkthrough.</p>
+</section>

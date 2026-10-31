@@ -1,0 +1,9 @@
+---
+// Real platform logo (Simple Icons). Pass mono to use a single colour.
+import { brands } from '../data/icons';
+interface Props { name: 'tiktok' | 'instagram' | 'youtube' | 'linkedin' | 'shopify' | 'fiverr'; mono?: string; class?: string; decorative?: boolean }
+const { name, mono, class: cls = 'platform', decorative = false } = Astro.props;
+const b = brands[name];
+const fill = mono ?? (name === 'tiktok' ? '#010306' : `#${b.hex}`);
+---
+<svg class={cls} viewBox="0 0 24 24" {...(decorative ? { 'aria-hidden': 'true' } : { role: 'img', 'aria-label': b.title })}><path fill={fill} d={b.path} /></svg>

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { FORMS, PENDING, estherMonths } from '../data/site';
+import { breadcrumb } from '../data/schema';
+const months = estherMonths();
+const crumbs = [{ name: 'Free Competitor Creator Audit', path: '/competitor-audit' }];
+const gets = [
+  ['users', 'The competitor creator map', 'Creators who posted for 3 of your direct competitors in the last 30 days, with handles and audience fit'],
+  ['target', 'The hooks that win', 'The top-viewed opening lines and angles in your niche'],
+  ['video', 'The winning format', 'What the best-performing posts in your category actually look like'],
+  ['search', 'Your TikTok search gap', 'Creator posts for your brand vs each competitor, side by side'],
+  ['circle-play', 'A 10-minute Loom walkthrough', 'Of the findings, recorded for your brand']
+];
+---
+<BaseLayout
+  title="Free Competitor Creator Audit for Beauty Brands"
+  description="See which creators post for your top 3 competitors, which hooks win, and your TikTok search gap. Free for US beauty brands doing $500K+."
+  path="/competitor-audit"
+  schema={[breadcrumb(crumbs)]}
+>
+  <section class="page-hero">
+    <div class="container split split--top">
+      <div>
+        <Breadcrumbs items={crumbs} />
+        <p class="eyebrow">Free Competitor Creator Audit</p>
+        <h1 class="display-xl">See exactly which creators are posting for <em>your top 3 competitors.</em></h1>
+        <p class="lead">We’ll map the creators, hooks and formats winning in your category on TikTok and Instagram, and show you the gap between your brand and theirs. Free, for US beauty brands doing $500K+ a year.</p>
+        <ul class="checks">
+          {gets.map(([icon, t, d]) => (<li><Icon name={icon} /><span><strong>{t}:</strong> {d}</span></li>))}
+        </ul>
+        <p class="muted">Delivery: within 5 business days.</p>
+      </div>
+      <div class="form-card" id="audit-form">
+        <h2 class="heading-sm mb-6">Get my free audit</h2>
+        <form class="form" action={FORMS.audit} method="post" data-form="audit" data-success="audit-success">
+          <div class="field"><label for="a-name">Name</label><input id="a-name" name="fields[name]" type="text" autocomplete="name" required /></div>
+          <div class="field"><label for="a-email">Work email</label><input id="a-email" name="fields[email]" type="email" autocomplete="email" required /></div>
+          <div class="field"><label for="a-brand">Brand website or TikTok handle</label><input id="a-brand" name="fields[website]" type="text" required /></div>
+          <div class="field"><label for="a-comp">Your 3 closest competitors <span class="hint">(leave blank and we’ll pick)</span></label><input id="a-comp" name="fields[competitors]" type="text" /></div>
+          <div class="field"><label for="a-rev">Annual revenue</label>
+            <select id="a-rev" name="fields[revenue]" required><option value="">Select</option><option>Under $500K</option><option>$500K–$2M</option><option>$2M–$10M</option><option>$10M+</option></select></div>
+          <div class="hp" aria-hidden="true"><label for="a-hp">Leave this empty</label><input id="a-hp" name="company_url" type="text" tabindex="-1" autocomplete="off" /></div>
+          <input type="hidden" name="form" value="audit" /><input type="hidden" name="ts" value="" />
+          <button class="btn btn--primary btn--block" type="submit">Get my free audit</button>
+          <p class="form-note">No call required to receive it. US skincare, cosmetics and beauty brands only.</p>
+        </form>
+        <div class="form-success" id="audit-success" tabindex="-1" role="status">
+          <h3>Your audit is underway.</h3>
+          <p>Check your inbox for a confirmation. Your findings and Loom walkthrough arrive within 5 business days.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="why-title">
+    <div class="container split split--top">
+      <div><h2 id="why-title" class="display-lg">Why it’s free</h2></div>
+      <div class="prose">
+        <p>It’s the first five days of our paid process. We’d rather show you how we think than tell you. If you like what you see, the audit becomes your creator brief on day one.</p>
+        <div class="chipline mt-6"><span><span data-months>{months}</span> months</span><span>2,000+ creator collaborations</span><span>50–200 posts a month for Esther Formula</span></div>
+      </div>
+    </div>
+  </section>
+
+  {PENDING.playbookReady && (
+  <section class="section" aria-labelledby="pdf-title">
+    <div class="container">
+      <div class="proof-card">
+        <div>
+          <p class="eyebrow">Not ready to share your brand?</p>
+          <h2 id="pdf-title" class="display-md">The 100-Post Month: <em>a seeding playbook for beauty brands</em></h2>
+          <p class="mt-6">A free PDF covering the confirm-first method, a post-rate tracker template and the cost-per-post math.</p>
+        </div>
+        <div>
+          <form class="form" action={FORMS.playbook} method="post" data-form="playbook" data-success="playbook-success">
+            <div class="field"><label for="p-name">First name</label><input id="p-name" name="fields[name]" type="text" autocomplete="given-name" required /></div>
+            <div class="field"><label for="p-email">Email</label><input id="p-email" name="fields[email]" type="email" autocomplete="email" required /></div>
+            <div class="hp" aria-hidden="true"><label for="p-hp">Leave this empty</label><input id="p-hp" name="company_url" type="text" tabindex="-1" autocomplete="off" /></div>
+            <input type="hidden" name="form" value="playbook" /><input type="hidden" name="ts" value="" />
+            <button class="btn btn--secondary" type="submit"><Icon name="file-text" />Send me the playbook</button>
+          </form>
+          <div class="form-success" id="playbook-success" tabindex="-1" role="status">
+            <h3>On its way.</h3>
+            <p>Check your inbox for the playbook.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  )}
+</BaseLayout>

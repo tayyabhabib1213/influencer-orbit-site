@@ -1,0 +1,12 @@
+---
+import { PROOF } from '../data/site';
+const stats = [
+  [PROOF.collaborations, 'creator collaborations'],
+  [PROOF.creators, 'creators in our network'],
+  [PROOF.brands, 'brands served'],
+  [PROOF.shipmentsPerMonth, 'product shipments a month']
+];
+---
+<dl class="stats" aria-label="Influencer Orbit in numbers">
+  {stats.map(([n, l]) => (<div class="stat"><dt>{l}</dt><dd>{n}</dd></div>))}
+</dl>

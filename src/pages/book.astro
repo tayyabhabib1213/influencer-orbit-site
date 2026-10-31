@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ReviewCard from '../components/ReviewCard.astro';
+import { SITE, FORMS, PROOF, estherMonths } from '../data/site';
+import { REVIEWS } from '../data/content';
+import { breadcrumb } from '../data/schema';
+const months = estherMonths();
+const crumbs = [{ name: 'Book a walkthrough', path: '/book' }];
+const calUrl = `${SITE.calendly}?hide_gdpr_banner=1&primary_color=092d92`;
+---
+<BaseLayout
+  title="Book a Walkthrough · Influencer Orbit"
+  description="See the live tracker and a real monthly report in 20 minutes, before you commit. Creator seeding for US skincare and beauty brands."
+  path="/book"
+  schema={[breadcrumb(crumbs)]}
+  stickyCta={false}
+>
+  <section class="page-hero" style="padding-bottom:var(--space-8)">
+    <div class="container">
+      <Breadcrumbs items={crumbs} />
+      <p class="eyebrow">Book a walkthrough</p>
+      <h1 class="display-xl">See the live tracker <em>before you commit to anything.</em></h1>
+      <p class="lead">20 minutes. We’ll show you the real Esther Formula tracker and the monthly report you’d receive. Then we’ll run the cost-per-post math against your current setup.</p>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0" aria-label="Booking calendar and proof">
+    <div class="container booking">
+      <div class="calendly-box">
+        <div class="calendly-inline-widget" data-url={calUrl}></div>
+        <noscript><div class="calendly-fallback"><a class="btn btn--primary" href={SITE.calendly}>Open the booking calendar</a></div></noscript>
+        <p class="calendly-fallback muted small">Calendar not loading? <a href={SITE.calendly} target="_blank" rel="noopener">Book on Calendly directly</a>.</p>
+      </div>
+      <aside class="sidebar-proof" aria-labelledby="call-title">
+        <div class="card">
+          <h2 id="call-title" class="heading-sm">What happens on the call</h2>
+          <ol class="agenda mt-6">
+            <li><span class="mono">Min 0–5</span><span>Your current program: posts per month, post rate, who runs it, where it stalls.</span></li>
+            <li><span class="mono">Min 5–13</span><span>The live tracker and monthly report, inside a real account (redacted).</span></li>
+            <li><span class="mono">Min 13–20</span><span>Cost-per-post math for your tier, guarantee terms in writing, and an honest fit check.</span></li>
+          </ol>
+          <p class="mt-6 muted small">No pitch deck. If it isn’t a fit, we’ll say so on the call.</p>
+        </div>
+        <div class="card card--ink">
+          <ul class="checks" style="margin:0">
+            <li><Icon name="check" /><span><span data-months>{months}</span> months running for the same beauty brand</span></li>
+            <li><Icon name="check" /><span>2,000+ creator collaborations, {PROOF.totalPosts} posts live</span></li>
+            <li><Icon name="check" /><span>50 to 200 creator posts every month</span></li>
+            <li><Icon name="check" /><span>Post count guaranteed by day 60, or month three is free</span></li>
+          </ul>
+        </div>
+        <ReviewCard {...REVIEWS[0]} />
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section--white" aria-labelledby="email-title">
+    <div class="container split split--top">
+      <div>
+        <h2 id="email-title" class="display-lg">Prefer to start by email?</h2>
+        <p class="lead mt-6">Tell us a little about your brand. {SITE.responseTime}</p>
+        <ul class="contact-list mt-8">
+          <li><Icon name="mail" /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li><Icon name="user-check" /><a href={SITE.founder.linkedin} target="_blank" rel="noopener">Tayyab Habib on LinkedIn</a></li>
+          <li><Icon name="clock" /><span>Response time: one business day, by email, Slack or WhatsApp</span></li>
+        </ul>
+      </div>
+      <div class="form-card">
+        <form class="form" action={FORMS.contact} method="post" data-form="contact" data-success="contact-success">
+          <div class="form-grid form-grid--2">
+            <div class="field"><label for="c-name">Name</label><input id="c-name" name="fields[name]" type="text" autocomplete="name" required /></div>
+            <div class="field"><label for="c-email">Work email</label><input id="c-email" name="fields[email]" type="email" autocomplete="email" required /></div>
+          </div>
+          <div class="field"><label for="c-site">Brand website</label><input id="c-site" name="fields[website]" type="url" inputmode="url" placeholder="https://" autocomplete="url" required /></div>
+          <div class="form-grid form-grid--2">
+            <div class="field"><label for="c-rev">Annual revenue</label>
+              <select id="c-rev" name="fields[revenue]" required><option value="">Select</option><option>Under $500K</option><option>$500K–$2M</option><option>$2M–$10M</option><option>$10M+</option></select></div>
+            <div class="field"><label for="c-posts">Creator posts per month now</label>
+              <select id="c-posts" name="fields[creator_posts]" required><option value="">Select</option><option>0–15</option><option>15–50</option><option>50–100</option><option>100+</option></select></div>
+          </div>
+          <div class="field"><label for="c-problem">What’s the biggest problem with your creator program? <span class="hint">(optional)</span></label><textarea id="c-problem" name="fields[problem]" rows="3"></textarea></div>
+          <div class="hp" aria-hidden="true"><label for="c-hp">Leave this empty</label><input id="c-hp" name="company_url" type="text" tabindex="-1" autocomplete="off" /></div>
+          <input type="hidden" name="form" value="contact" /><input type="hidden" name="ts" value="" />
+          <button class="btn btn--primary" type="submit">Send it</button>
+          <p class="form-note">{SITE.responseTime} US beauty brands only.</p>
+        </form>
+        <div class="form-success" id="contact-success" tabindex="-1" role="status">
+          <h3>Got it.</h3>
+          <p>We’ll reply within one business day. While you wait, here’s how we run 50 to 200 posts a month for Esther Formula: <a href="/case-studies">read the case studies</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

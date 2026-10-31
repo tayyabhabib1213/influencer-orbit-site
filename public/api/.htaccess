@@ -1,0 +1,4 @@
+# Only lead.php may be reached in this folder
+<FilesMatch "^(?!lead\.php$).*">
+  Require all denied
+</FilesMatch>

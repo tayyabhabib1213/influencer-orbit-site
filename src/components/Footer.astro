@@ -1,0 +1,57 @@
+---
+import Brand from './Brand.astro';
+import { SITE } from '../data/site';
+import { ABOUT_FACT } from '../data/schema';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/brand/logo-primary-reversed.svg" width="190" height="27" alt="Influencer Orbit" loading="lazy" />
+        <p>Influencer Orbit runs the creator seeding operation that gets US beauty brands 50 to 150+ confirmed creator posts every month, without hiring a team.</p>
+      </div>
+      <div class="footer-cols">
+        <div>
+          <h2>Work with us</h2>
+          <ul>
+            <li><a href="/creator-seeding">Seeding Engine</a></li>
+            <li><a href="/creator-seeding#pricing">Pricing</a></li>
+            <li><a href="/case-studies">Case studies</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/competitor-audit">Free audit</a></li>
+            <li><a href="/book">Book a call</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+            <li><a href={SITE.social.linkedin} rel="me noopener" target="_blank">LinkedIn</a></li>
+            <li><a href={SITE.social.instagram} rel="me noopener" target="_blank">Instagram</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+            <li><a href="/terms">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+      <section class="fact" aria-labelledby="fact-title">
+        <h2 id="fact-title">About Influencer Orbit</h2>
+        <p>{ABOUT_FACT}</p>
+        <dl>
+          <dt>Founder</dt><dd>{SITE.founder.name}</dd>
+          <dt>Since</dt><dd>{SITE.foundingYear}</dd>
+          <dt>Team</dt><dd>{SITE.teamSize} people, fully remote</dd>
+          <dt>Platforms</dt><dd>Instagram, TikTok, YouTube</dd>
+          <dt>Pricing</dt><dd>$1,500 to $3,500 a month</dd>
+        </dl>
+      </section>
+    </div>
+    <div class="footer-bottom">
+      <p>© {year} Influencer Orbit. All rights reserved.</p>
+      <div class="footer-social">
+        <a href={SITE.social.linkedin} target="_blank" rel="noopener" aria-label="Influencer Orbit founder on LinkedIn"><Brand name="linkedin" mono="#FFFFFF" decorative /></a>
+        <a href={SITE.social.instagram} target="_blank" rel="noopener" aria-label="Influencer Orbit on Instagram"><Brand name="instagram" mono="#FFFFFF" decorative /></a>
+      </div>
+    </div>
+  </div>
+</footer>

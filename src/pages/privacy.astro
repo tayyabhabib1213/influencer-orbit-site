@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { SITE } from '../data/site';
+import { breadcrumb } from '../data/schema';
+const crumbs = [{ name: 'Privacy policy', path: '/privacy' }];
+---
+<BaseLayout title="Privacy Policy · Influencer Orbit" description="How Influencer Orbit collects, uses and protects the information you share through our website, forms and booking calendar." path="/privacy" schema={[breadcrumb(crumbs)]}>
+  <section class="page-hero">
+    <div class="container legal">
+      <Breadcrumbs items={crumbs} />
+      <h1 class="display-lg">Privacy policy</h1>
+      <p class="muted">Last updated: November 1, 2026</p>
+
+      <h2>Who we are</h2>
+      <p>Influencer Orbit (“we”, “us”) runs creator seeding programs for beauty brands. This policy covers {SITE.url.replace('https://', '')} and the forms and booking tools on it. Contact: <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+
+      <h2>What we collect</h2>
+      <ul>
+        <li><strong>Information you give us:</strong> your name, work email, brand website or social handle, revenue range, current creator volume, competitors you list, and anything you write in a form.</li>
+        <li><strong>Booking details:</strong> when you book a walkthrough, our scheduling provider collects your name, email, the time you choose and your answers to booking questions.</li>
+        <li><strong>Usage data:</strong> if analytics are enabled, pages visited, device type, approximate location and how you arrived, collected with cookies or similar technology.</li>
+      </ul>
+
+      <h2>How we use it</h2>
+      <ul>
+        <li>To reply to you, prepare your Competitor Creator Audit, run the call you booked and send what you asked for.</li>
+        <li>To send a short series of follow-up emails about creator seeding. Every email has an unsubscribe link.</li>
+        <li>To understand which pages help visitors and improve the site.</li>
+      </ul>
+      <p>We do not sell your personal information.</p>
+
+      <h2>Who we share it with</h2>
+      <p>Only service providers that help us run the site and our business, under their own privacy terms: our email platform (MailerLite), our scheduling tool (Calendly), our hosting provider (Cloudflare) and, if enabled, analytics and advertising tools (Google Analytics, Meta and LinkedIn). We may also disclose information if required by law.</p>
+
+      <h2>How long we keep it</h2>
+      <p>We keep lead and client correspondence for as long as needed for the purposes above, and delete or anonymise it when it is no longer needed.</p>
+
+      <h2>Your choices and rights</h2>
+      <ul>
+        <li>Unsubscribe from emails at any time using the link in any email.</li>
+        <li>Ask us to access, correct or delete your information by emailing <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</li>
+        <li>Depending on where you live (for example California, the UK or the EU), you may have additional rights, including the right to object to processing or to complain to a regulator.</li>
+        <li>You can block or delete cookies in your browser settings.</li>
+      </ul>
+
+      <h2>International transfers</h2>
+      <p>Our team works remotely from Pakistan and our providers may process data in the United States and other countries. We use providers that apply appropriate safeguards.</p>
+
+      <h2>Children</h2>
+      <p>This site is for businesses and is not directed at children under 16.</p>
+
+      <h2>Changes</h2>
+      <p>We will update this page when our practices change and revise the date at the top.</p>
+    </div>
+  </section>
+</BaseLayout>
