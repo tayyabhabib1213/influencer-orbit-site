@@ -115,7 +115,7 @@ const art = article({
   <section class="section" aria-labelledby="gallery-title">
     <div class="container">
       <div class="section-head">
-        <h2 id="gallery-title" class="display-lg">Real creator posts from the program</h2>
+        <h2 id="gallery-title" class="display-lg">Real creator posts <em>from the program</em></h2>
       </div>
       <CreatorGrid count={12} wide />
     </div>
@@ -132,14 +132,12 @@ const art = article({
 
   <section class="section" aria-labelledby="pilot-title">
     <div class="container">
-      <div class="proof-card">
-        <div>
-          <h2 id="pilot-title" class="display-lg">Your brand could be case study #2.</h2>
-        </div>
-        <div>
-          <p>We’re looking for one Shopify-native US skincare brand doing $1M to $3M a year to run the Orbit Seeding Engine as a named case study, with month-by-month post counts published. Ask about founding-client terms on the walkthrough.</p>
-          <a class="btn btn--primary mt-6" href="/book" data-cta="pilot-slot"><Icon name="calendar" />Apply on a {SITE.callLength} walkthrough</a>
-        </div>
+      <div class="section-head">
+        <h2 id="pilot-title" class="display-lg">Your brand could be <em>case study #2</em>.</h2>
+        <p class="lead">We’re looking for one Shopify-native US skincare brand doing $1M to $3M a year to run the Orbit Seeding Engine as a named case study, with month-by-month post counts published. Ask about founding-client terms on the walkthrough.</p>
+      </div>
+      <div class="center-cta">
+        <a class="btn btn--primary" href="/book" data-cta="pilot-slot"><Icon name="calendar" />Apply on a {SITE.callLength} walkthrough</a>
       </div>
     </div>
   </section>
@@ -147,14 +145,14 @@ const art = article({
   <section class="section section--white" aria-labelledby="faq-title">
     <div class="container">
       <div class="section-head">
-        <h2 id="faq-title" class="display-md">Questions about the Esther Formula program</h2>
+        <h2 id="faq-title" class="display-lg">Questions about the <em>Esther Formula</em> program</h2>
       </div>
       <Faq items={CASE_FAQS} />
     </div>
   </section>
 
   <FinalCta
-    title="Want to see it live instead of reading about it?"
+    title="Want to see it live <em>instead of reading about it</em>?"
     text="On the walkthrough we open the real Esther Formula tracker (redacted) and the monthly report you’d receive."
     primaryLabel="See the live tracker"
     secondary={false}

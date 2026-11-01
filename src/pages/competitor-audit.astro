@@ -21,12 +21,16 @@ const gets = [
   schema={[breadcrumb(crumbs)]}
 >
   <section class="page-hero">
-    <div class="container split split--top">
-      <div>
+    <div class="container">
+      <div class="page-hero__head">
         <Breadcrumbs items={crumbs} />
         <p class="eyebrow">Free Competitor Creator Audit</p>
         <h1 class="display-xl">See exactly which creators are posting for <em>your top 3 competitors.</em></h1>
         <p class="lead">We’ll map the creators, hooks and formats winning in your category on TikTok and Instagram, and show you the gap between your brand and theirs. Free, for US beauty brands doing $500K+ a year.</p>
+      </div>
+      <div class="split split--top audit-body">
+      <div>
+        <h2 class="heading-sm mb-6">What you get</h2>
         <ul class="checks">
           {gets.map(([icon, t, d]) => (<li><Icon name={icon} /><span><strong>{t}:</strong> {d}</span></li>))}
         </ul>
@@ -51,13 +55,16 @@ const gets = [
           <p>Check your inbox for a confirmation. Your findings and Loom walkthrough arrive within 5 business days.</p>
         </div>
       </div>
+      </div>
     </div>
   </section>
 
   <section class="section section--white" aria-labelledby="why-title">
-    <div class="container split split--top">
-      <div><h2 id="why-title" class="display-lg">Why it’s free</h2></div>
-      <div class="prose">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="why-title" class="display-lg">Why it’s <em>free</em></h2>
+      </div>
+      <div class="prose prose--center">
         <p>It’s the first five days of our paid process. We’d rather show you how we think than tell you. If you like what you see, the audit becomes your creator brief on day one.</p>
         <div class="chipline mt-6"><span><span data-months>{months}</span> months</span><span>2,000+ creator collaborations</span><span>50–200 posts a month for Esther Formula</span></div>
       </div>
@@ -70,7 +77,7 @@ const gets = [
       <div class="proof-card">
         <div>
           <p class="eyebrow">Not ready to share your brand?</p>
-          <h2 id="pdf-title" class="display-md">The 100-Post Month: <em>a seeding playbook for beauty brands</em></h2>
+          <h2 id="pdf-title" class="display-lg">The 100-Post Month: <em>a seeding playbook for beauty brands</em></h2>
           <p class="mt-6">A free PDF covering the confirm-first method, a post-rate tracker template and the cost-per-post math.</p>
         </div>
         <div>

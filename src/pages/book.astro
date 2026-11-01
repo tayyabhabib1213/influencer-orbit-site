@@ -57,11 +57,14 @@ const calUrl = `${SITE.calendly}?hide_gdpr_banner=1&primary_color=092d92`;
   </section>
 
   <section class="section section--white" aria-labelledby="email-title">
-    <div class="container split split--top">
+    <div class="container">
+      <div class="section-head">
+        <h2 id="email-title" class="display-lg">Prefer to start <em>by email</em>?</h2>
+        <p class="lead">Tell us a little about your brand. {SITE.responseTime}</p>
+      </div>
+      <div class="split split--top">
       <div>
-        <h2 id="email-title" class="display-lg">Prefer to start by email?</h2>
-        <p class="lead mt-6">Tell us a little about your brand. {SITE.responseTime}</p>
-        <ul class="contact-list mt-8">
+        <ul class="contact-list">
           <li><Icon name="mail" /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
           <li><Icon name="user-check" /><a href={SITE.founder.linkedin} target="_blank" rel="noopener">Tayyab Habib on LinkedIn</a></li>
           <li><Icon name="clock" /><span>Response time: one business day, by email, Slack or WhatsApp</span></li>
@@ -90,6 +93,7 @@ const calUrl = `${SITE.calendly}?hide_gdpr_banner=1&primary_color=092d92`;
           <h3>Got it.</h3>
           <p>We’ll reply within one business day. While you wait, here’s how we run 50 to 200 posts a month for Esther Formula: <a href="/case-studies">read the case studies</a>.</p>
         </div>
+      </div>
       </div>
     </div>
   </section>

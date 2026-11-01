@@ -67,7 +67,7 @@ const compare = {
   <section class="section section--white" aria-labelledby="changes-title">
     <div class="container">
       <div class="section-head section-head--center">
-        <h2 id="changes-title" class="display-md">What changes for you</h2>
+        <h2 id="changes-title" class="display-lg">What <em>changes for you</em></h2>
       </div>
       <div class="grid grid--3">
         <div class="card reveal"><span class="icon-tile"><Icon name="search" /></span><h3 class="heading-sm">You show up in TikTok search.</h3><p>50 to 150+ different real creators post about your product every month, not the same three faces on rotation.</p></div>
@@ -80,7 +80,7 @@ const compare = {
   <section class="section" id="how-it-works" aria-labelledby="included-title">
     <div class="container">
       <div class="section-head section-head--center">
-        <h2 id="included-title" class="display-lg">Everything it takes to get a post live, every month.</h2>
+        <h2 id="included-title" class="display-lg">Everything it takes to get a post live, <em>every month</em>.</h2>
       </div>
       <div class="table-wrap" tabindex="0" role="region" aria-labelledby="included-title">
         <table class="data-table">
@@ -98,7 +98,7 @@ const compare = {
   <section class="section section--white" aria-labelledby="timeline-title">
     <div class="container">
       <div class="section-head section-head--center">
-        <h2 id="timeline-title" class="display-lg">Your first 60 days</h2>
+        <h2 id="timeline-title" class="display-lg">Your first <em>60 days</em></h2>
       </div>
       <ol class="steps steps--3">
         {timeline.map(([when, title, text], i) => (
@@ -119,7 +119,7 @@ const compare = {
   <section class="section" id="pricing" aria-labelledby="pricing-title">
     <div class="container">
       <div class="section-head section-head--center">
-        <h2 id="pricing-title" class="display-lg">Priced per program. Measured per post.</h2>
+        <h2 id="pricing-title" class="display-lg">Priced per program. <em>Measured per post.</em></h2>
       </div>
       <div class="tiers">
         {TIERS.map((t) => (
@@ -134,7 +134,7 @@ const compare = {
           </article>
         ))}
       </div>
-      <div class="grid grid--2 grid--gap-lg mt-12">
+      <div class="grid grid--2 grid--gap-lg mt-12 terms-split">
         <div>
           <h3 class="heading-sm mb-6">Terms in one glance</h3>
           <ul class="terms">
@@ -172,7 +172,7 @@ const compare = {
   <section class="section section--white" id="compare" aria-labelledby="compare-title">
     <div class="container">
       <div class="section-head section-head--center">
-        <h2 id="compare-title" class="display-lg">The Seeding Engine vs. the other ways to get creator posts</h2>
+        <h2 id="compare-title" class="display-lg"><em>The Seeding Engine</em> vs. the other ways to get creator posts</h2>
       </div>
       <div class="table-wrap" tabindex="0" role="region" aria-labelledby="compare-title">
         <table class="data-table">
@@ -188,16 +188,14 @@ const compare = {
 
   <section class="section" aria-labelledby="proof-title">
     <div class="container">
-      <div class="proof-card">
-        <div>
-          <img class="proof-card__logo" src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" loading="lazy" />
-          <h2 id="proof-title" class="display-md">Esther Formula · <span data-months>{months}</span> months</h2>
-          <div class="chipline mt-6"><span>2,000+ creator collaborations</span><span>50–200 posts a month</span><span>0 influencer managers hired</span></div>
-        </div>
-        <div>
-          <p>The same confirm-first operation has run every month since January 2024. On the walkthrough you see the real tracker, redacted.</p>
-          <p class="mt-6"><a class="text-link" href="/case-studies">Read the case studies <Icon name="arrow-right" /></a></p>
-        </div>
+      <div class="section-head">
+        <h2 id="proof-title" class="display-lg"><em>Esther Formula</em> · <span data-months>{months}</span> months</h2>
+        <p class="lead">The same confirm-first operation has run every month since January 2024. On the walkthrough you see the real tracker, redacted.</p>
+      </div>
+      <div class="proof-strip">
+        <img src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" loading="lazy" />
+        <div class="chipline"><span>2,000+ creator collaborations</span><span>50–200 posts a month</span><span>0 influencer managers hired</span></div>
+        <a class="text-link" href="/case-studies">Read the case studies <Icon name="arrow-right" /></a>
       </div>
     </div>
   </section>
@@ -205,7 +203,7 @@ const compare = {
   <section class="section section--white" id="faq" aria-labelledby="faq-title">
     <div class="container">
       <div class="section-head section-head--center">
-        <h2 id="faq-title" class="display-lg">Questions about the Seeding Engine</h2>
+        <h2 id="faq-title" class="display-lg">Questions about the <em>Seeding Engine</em></h2>
       </div>
       <div class="faq-center"><Faq items={SERVICE_FAQS} /></div>
     </div>
@@ -213,8 +211,10 @@ const compare = {
 
   <section class="section" aria-labelledby="fit-title">
     <div class="container">
-      <div class="fit-panel">
-        <h2 id="fit-title" class="display-md mb-6">This is the wrong fit if</h2>
+      <div class="section-head">
+        <h2 id="fit-title" class="display-lg">This is the <em>wrong fit</em> if</h2>
+      </div>
+      <div class="fit-panel fit-panel--narrow">
         <ul class="fit fit--no">
           <li><Icon name="circle-x" /><span>Your warehouse can’t ship within three business days of creator confirmations</span></li>
           <li><Icon name="circle-x" /><span>You can’t approve briefs within 48 hours</span></li>
@@ -227,7 +227,7 @@ const compare = {
   </section>
 
   <FinalCta
-    title="See the tracker. Run the math. Then decide."
+    title="See the tracker. Run the math. <em>Then decide.</em>"
     micro="If the fit is right, outreach goes live within five days of kickoff."
   />
 </BaseLayout>

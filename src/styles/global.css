@@ -774,3 +774,58 @@ body { font-size: 17px; line-height: 1.7; }
 .founder--center .btn { margin-top: 8px; }
 @media (min-width: 768px) { .founder--center .founder__photo { width: 220px; max-width: 220px; } }
 @media (min-width: 768px) { .step { text-align: center; } .step__top { flex-direction: column; gap: 12px; align-items: center; } }
+
+/* =====================================================================
+   Round 4: one heading system (centered, two-tone) + problem section
+   ===================================================================== */
+.section-head { text-align: center; margin-left: auto; margin-right: auto; max-width: 780px; }
+.section-head h2 { text-wrap: balance; }
+.section-head .lead { margin-left: auto; margin-right: auto; color: var(--text-muted); font-size: 18px; }
+.display-hero em, .display-xl em, .display-lg em, .display-md em { color: var(--brand-navy); font-style: normal; }
+.final-cta .display-lg em, .guarantee .display-lg em, .section--ink .display-lg em { color: var(--surface-tint); }
+.prose--center { max-width: 720px; margin: 0 auto; }
+.prose--center .pull { text-align: center; margin-left: auto; margin-right: auto; }
+.prose--center .chips { justify-content: center; }
+
+/* Inner page heroes: centered like every section */
+.page-hero .container, .page-hero__head { text-align: center; }
+.page-hero h1 { margin-left: auto; margin-right: auto; max-width: 20em; text-wrap: balance; }
+.page-hero .lead { margin-left: auto; margin-right: auto; }
+.page-hero .breadcrumbs ol { justify-content: center; }
+.page-hero .cta-group, .page-hero .chipline { justify-content: center; }
+.page-hero .story__byline { text-align: center; }
+.page-hero .checks { text-align: left; }
+.audit-body { margin-top: 48px; text-align: left; }
+.page-hero.legal-hero .container, .legal { text-align: left; }
+
+/* Problem section */
+.problem-grid { display: grid; gap: 24px; align-items: stretch; }
+@media (min-width: 1024px) { .problem-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
+.problem-grid .post-rate { margin: 0; display: flex; flex-direction: column; justify-content: center; }
+.problem-points { display: grid; gap: 16px; }
+.problem-point { display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; padding: 22px 24px; border-radius: 18px; border: 1px solid var(--border-hairline); background: var(--surface-card); }
+.problem-point p { margin: 0; font-size: 16px; line-height: 1.65; color: var(--text-strong); }
+.problem-answer { display: grid; gap: 16px; margin-top: 32px; padding: 32px 28px; border-radius: 22px; background: var(--brand-ink); color: var(--text-on-dark-muted); }
+@media (min-width: 1024px) { .problem-answer { grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; padding: 44px 48px; } }
+.problem-answer__claim { margin: 0; font: 700 clamp(1.375rem, 1.1rem + 1vw, 1.875rem)/1.25 var(--font-display); letter-spacing: -0.02em; color: #fff; }
+.problem-answer p:last-child { margin: 0; font-size: 16px; line-height: 1.7; }
+.definition { display: grid; gap: 10px; margin-top: 20px; padding: 24px 28px; border-radius: 18px; border: 1px dashed #C5D0E4; background: transparent; }
+@media (min-width: 1024px) { .definition { grid-template-columns: 240px 1fr; gap: 32px; align-items: baseline; padding: 24px 32px; } }
+.definition h3 { margin: 0; font: 650 18px/26px var(--font-display); letter-spacing: -0.01em; color: var(--brand-navy); }
+.definition p { margin: 0; font-size: 15px; line-height: 1.7; color: var(--text-muted); max-width: none; }
+
+/* Proof strip, narrow panels, centered contact list */
+.proof-strip { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 16px 28px; }
+.proof-strip img { width: 180px; height: auto; }
+.fit-panel--narrow { max-width: 760px; margin: 0 auto; }
+.contact-list--center { justify-items: center; }
+.contact-list--center li { justify-content: center; }
+.proof-card__logo { margin-top: 0; }
+.center-cta .btn { margin: 0 auto; }
+.legal-hero .breadcrumbs ol { justify-content: flex-start; }
+.legal-hero h1 { margin-left: 0; }
+
+/* Round 4b: QA fixes */
+.proof-strip { flex-direction: column; gap: 20px; }
+.proof-strip .chipline { justify-content: center; }
+.terms-split > .card { align-self: start; }
