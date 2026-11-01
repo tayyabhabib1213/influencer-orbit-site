@@ -2,16 +2,7 @@
 import Brand from './Brand.astro';
 import Icon from './Icon.astro';
 import { SITE, CTA } from '../data/site';
-import { ABOUT_SHORT } from '../data/schema';
 const year = new Date().getFullYear();
-const facts = [
-  ['Founder', SITE.founder.name],
-  ['Since', String(SITE.foundingYear)],
-  ['Team', `${SITE.teamSize} people, fully remote`],
-  ['Platforms', 'Instagram, TikTok, YouTube'],
-  ['Pricing', '$1,500 to $3,500 a month'],
-  ['Post rate', '70%+ confirm-first']
-];
 ---
 <footer class="site-footer">
   <div class="container">
@@ -45,16 +36,6 @@ const facts = [
         </ul>
       </div>
     </div>
-
-    <section class="footer-about" aria-labelledby="fact-title">
-      <div>
-        <h2 id="fact-title">About Influencer Orbit</h2>
-        <p>{ABOUT_SHORT}</p>
-      </div>
-      <dl class="footer-facts">
-        {facts.map(([k, v]) => (<div><dt>{k}</dt><dd>{v}</dd></div>))}
-      </dl>
-    </section>
 
     <div class="footer-bottom">
       <div class="footer-legal">

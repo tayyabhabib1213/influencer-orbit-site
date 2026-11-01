@@ -1,0 +1,30 @@
+---
+// Hero visual: real creator posts from the Esther Formula program + a compact live counter (sample data).
+import Icon from './Icon.astro';
+import { CREATORS } from '../data/content';
+const photos = CREATORS.slice(0, 5);
+---
+<figure class="hero-visual" aria-label="Creator posts from the Esther Formula program, with a sample live post counter">
+  <div class="hero-visual__strip">
+    {photos.map((c, i) => (
+      <picture class={`hero-visual__photo hero-visual__photo--${i + 1}`}>
+        <source type="image/avif" srcset={`/images/creators/${c.file}-${c.width}.avif`} />
+        <img src={`/images/creators/${c.file}-${c.width}.webp`} width={c.width} height={Math.round(c.width * 1.25)} alt={c.alt} loading={i < 3 ? 'eager' : 'lazy'} fetchpriority={i === 2 ? 'high' : 'auto'} decoding="async" />
+      </picture>
+    ))}
+  </div>
+  <div class="live-card" role="group" aria-label="Sample live counter">
+    <div class="live-card__top">
+      <span class="live-card__title"><span class="live-card__dot" aria-hidden="true"></span>Posts live this month</span>
+      <span class="live-card__tag">Sample</span>
+    </div>
+    <p class="live-card__count"><b>64</b><span>/ 100 target</span></p>
+    <div class="live-card__bar" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" aria-label="64 of 100 posts live, sample data"><i style="width:64%"></i></div>
+    <ul class="live-card__rows">
+      <li><Icon name="circle-check" /><span>Confirmed</span><b>118</b></li>
+      <li><Icon name="truck" /><span>Shipped</span><b>97</b></li>
+      <li class="is-live"><Icon name="circle-play" /><span>Live</span><b>64</b></li>
+    </ul>
+  </div>
+  <figcaption class="sr-only">Photos: real creator posts from the Esther Formula program. Counter: illustrative sample of the live tracker.</figcaption>
+</figure>

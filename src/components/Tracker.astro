@@ -19,18 +19,18 @@ const pill = { live: ['circle-play', 'Live'], shipped: ['truck', 'Shipped'], con
   <div class="tracker__summary">
     <div><strong>118</strong>confirmed</div><div><strong>97</strong>shipped</div><div><strong>64</strong>live</div><div><strong>1.9M</strong>views</div>
   </div>
-  <div class="tracker__scroll" tabindex="0" role="region" aria-label="Sample tracker table">
+  <div class="tracker__scroll">
     <table>
-      <thead><tr><th scope="col">Creator</th><th scope="col">Platform</th><th scope="col" class="hide-sm">Followers</th><th scope="col">Status</th><th scope="col" class="hide-sm">Updated</th><th scope="col">Views</th></tr></thead>
+      <thead><tr><th scope="col">Creator</th><th scope="col">Platform</th><th scope="col" class="col-followers">Followers</th><th scope="col">Status</th><th scope="col" class="col-updated">Updated</th><th scope="col" class="col-views">Views</th></tr></thead>
       <tbody>
         {rows.map(([p, f, s, d, v, w]) => (
           <tr>
             <td><div class="creator"><span class="creator__avatar"></span><span class="redact" style={`width:${w}px`}></span><span class="sr-only">Creator handle hidden</span></div></td>
             <td><Brand name={p} /></td>
-            <td class="num hide-sm">{f}</td>
+            <td class="num col-followers">{f}</td>
             <td><span class={`pill pill--${s}`}><Icon name={pill[s][0]} />{pill[s][1]}</span></td>
-            <td class="num hide-sm">{d}</td>
-            <td class="num">{v}</td>
+            <td class="num col-updated">{d}</td>
+            <td class="num col-views">{v}</td>
           </tr>
         ))}
       </tbody>
