@@ -122,39 +122,42 @@ const months = estherMonths();
 
   <!-- 6. Who it's for -->
   <section class="section section--white" aria-labelledby="fit-title">
-    <div class="container fit-layout">
-      <div class="fit-intro">
-        <h2 id="fit-title" class="display-lg">Built for founders who think in <em>cost per post</em>.</h2>
-        <p class="lead">We work best with Shopify-native brands doing $500K to $10M a year, with 2 to 50 people, who can approve a brief in 48 hours and ship within three business days.</p>
-        <dl class="icp" aria-label="Ideal client profile">
-          <div><dt><Icon name="badge-dollar-sign" />Revenue</dt><dd>$500K–$10M a year</dd></div>
-          <div><dt><Icon name="users" />Team</dt><dd>2 to 50 people</dd></div>
-          <div><dt><Icon name="globe" />Market</dt><dd>US DTC beauty</dd></div>
-          <div><dt><Icon name="store" />Store</dt><dd>Shopify-native</dd></div>
-        </dl>
-      </div>
-      <div class="fit-board">
-        <div class="fit-board__col">
-          <h3>This is for you if you run a US DTC skincare, cosmetics or beauty brand and you:</h3>
-          <ul class="fit">
-            <li><Icon name="circle-check" /><span>Want your brand showing up when shoppers search your product or hero ingredient on TikTok</span></li>
-            <li><Icon name="circle-check" /><span>Gift product now but get 5 to 15 posts a month, or have plateaued at what one coordinator can handle</span></li>
-            <li><Icon name="circle-check" /><span>Are tired of boxes that vanish, agencies that report “estimated reach”, and ad creative that dies every three weeks</span></li>
-          </ul>
-        </div>
-        <div class="fit-board__col fit-board__col--no">
-          <h3>The wrong fit if</h3>
-          <ul class="fit fit--no">
-            <li><Icon name="circle-x" /><span>Your warehouse can’t ship within three business days of creator confirmations</span></li>
-            <li><Icon name="circle-x" /><span>You can’t approve briefs within 48 hours</span></li>
-            <li><Icon name="circle-x" /><span>You need a guarantee on views or sales rather than posts</span></li>
-            <li><Icon name="circle-x" /><span>You’re outside US skincare, cosmetics or beauty</span></li>
-          </ul>
-          <p class="fit-board__note">We’ll tell you on the call, not after you’ve paid.</p>
-        </div>
-      </div>
-    </div>
     <div class="container">
+      <div class="section-head">
+        <h2 id="fit-title" class="display-lg">Built for founders who think in <em>cost per post</em>.</h2>
+        <p class="lead">This is for you if you run a US DTC skincare, cosmetics or beauty brand and you:</p>
+      </div>
+      <div class="fit-panels">
+        <div class="fit-panel fit-panel--yes">
+          <h3><Icon name="circle-check" />A good fit</h3>
+          <ul class="fit">
+            <li><Icon name="check" /><span>Want your brand showing up when shoppers search your product or hero ingredient on TikTok</span></li>
+            <li><Icon name="check" /><span>Gift product now but get 5 to 15 posts a month, or have plateaued at what one coordinator can handle</span></li>
+            <li><Icon name="check" /><span>Are tired of boxes that vanish, agencies that report “estimated reach”, and ad creative that dies every three weeks</span></li>
+          </ul>
+          <div class="fit-panel__foot">
+            <p><strong>We work best with</strong> Shopify-native brands doing $500K to $10M a year, with 2 to 50 people, who can approve a brief in 48 hours and ship within three business days.</p>
+            <div class="chips" aria-label="Ideal client profile">
+              <span class="chip"><Icon name="badge-dollar-sign" />$500K to $10M a year</span>
+              <span class="chip"><Icon name="users" />2 to 50 people</span>
+              <span class="chip"><Icon name="globe" />DTC Beauty</span>
+              <span class="chip"><Icon name="store" />Shopify-native</span>
+            </div>
+          </div>
+        </div>
+        <div class="fit-panel fit-panel--no">
+          <h3><Icon name="circle-x" />The wrong fit if</h3>
+          <ul class="fit fit--no">
+            <li><Icon name="minus" /><span>Your warehouse can’t ship within three business days of creator confirmations</span></li>
+            <li><Icon name="minus" /><span>You can’t approve briefs within 48 hours</span></li>
+            <li><Icon name="minus" /><span>You need a guarantee on views or sales rather than posts</span></li>
+            <li><Icon name="minus" /><span>You’re outside US skincare, cosmetics or beauty</span></li>
+          </ul>
+          <div class="fit-panel__foot">
+            <p class="muted">We’ll tell you on the call, not after you’ve paid.</p>
+          </div>
+        </div>
+      </div>
       <div class="situations">
         <div class="situation">
           <span class="icon-tile"><Icon name="clock" /></span>
@@ -251,7 +254,7 @@ const months = estherMonths();
 
   <!-- 11. Founder -->
   <section class="section" aria-labelledby="founder-title">
-    <div class="container founder">
+    <div class="container founder founder--center">
       <div class="founder__photo">
         <picture>
           <source type="image/avif" srcset="/images/brand/tayyab-habib-480.avif 480w, /images/brand/tayyab-habib-800.avif 800w" sizes="(min-width: 1024px) 380px, 90vw" />
