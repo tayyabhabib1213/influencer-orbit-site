@@ -6,10 +6,10 @@ ErrorDocument 404 /404.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  # 1. One canonical address: https://www.influencerorbit.com
+  # 1. One canonical address: https://influencerorbit.com (no www)
   RewriteCond %{HTTPS} off [OR]
-  RewriteCond %{HTTP_HOST} !^www\. [NC]
-  RewriteRule ^ https://www.influencerorbit.com%{REQUEST_URI} [L,R=301,NE]
+  RewriteCond %{HTTP_HOST} ^www\. [NC]
+  RewriteRule ^ https://influencerorbit.com%{REQUEST_URI} [L,R=301,NE]
 
   # 2. Old or alternative URLs
   RewriteRule ^(services|seeding-engine)/?$ /creator-seeding [L,R=301]

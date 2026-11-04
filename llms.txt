@@ -25,9 +25,9 @@
 - Method: confirm-first seeding. No creator receives product until they confirm.
 
 ## Pages
-- [Home](https://www.influencerorbit.com/): outcome, how it works, proof, pricing overview, guarantee, FAQ
-- [Orbit Seeding Engine: pricing and process](https://www.influencerorbit.com/creator-seeding): tiers, what's included, 60-day timeline, guarantee, comparison, FAQ
-- [Case studies](https://www.influencerorbit.com/case-studies): three Esther Formula stories
-- [About](https://www.influencerorbit.com/about): point of view, founder, operating rules, team
-- [Book a walkthrough](https://www.influencerorbit.com/book): 20-minute call, see the live tracker
-- [Free Competitor Creator Audit](https://www.influencerorbit.com/competitor-audit): free audit of the creators posting for a brand's top 3 competitors
+- [Home](https://influencerorbit.com/): outcome, how it works, proof, pricing overview, guarantee, FAQ
+- [Orbit Seeding Engine: pricing and process](https://influencerorbit.com/creator-seeding): tiers, what's included, 60-day timeline, guarantee, comparison, FAQ
+- [Case studies](https://influencerorbit.com/case-studies): three Esther Formula stories
+- [About](https://influencerorbit.com/about): point of view, founder, operating rules, team
+- [Book a walkthrough](https://influencerorbit.com/book): 20-minute call, see the live tracker
+- [Free Competitor Creator Audit](https://influencerorbit.com/competitor-audit): free audit of the creators posting for a brand's top 3 competitors
