@@ -3,7 +3,7 @@
 
 export const SITE = {
   name: 'Influencer Orbit',
-  url: 'https://www.influencerorbit.com',
+  url: 'https://influencerorbit.com',
   tagline: 'The creator seeding operation for beauty brands',
   email: 'tayyab@influencerorbit.com',
   founder: {
