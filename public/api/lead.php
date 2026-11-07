@@ -67,14 +67,7 @@ $when = gmdate('Y-m-d H:i') . ' UTC';
 $csv = @fopen($privateDir . '/io-leads.csv', 'a');
 if ($csv) { fputcsv($csv, array_merge([$when, $type], array_values($lead), [$ip])); fclose($csv); }
 
-// 2. Email
-$body = $labels[$type] . " — $when\n\n";
-foreach ($lead as $k => $v) if ($v !== '') $body .= ucfirst(str_replace('_', ' ', $k)) . ": $v\n";
-$body .= "\nPage: " . $clean($_SERVER['HTTP_REFERER'] ?? '', 300) . "\n";
-$headers = "From: Influencer Orbit Website <{$config['MAIL_FROM']}>\r\nReply-To: " . str_replace(["\n", "\r"], '', $lead['email']) . "\r\nContent-Type: text/plain; charset=utf-8";
-$mailed = $type === 'newsletter' && $config['MAILERLITE_API_KEY'] !== '' ? false : @mail($config['LEAD_TO'], '=?UTF-8?B?' . base64_encode($labels[$type] . ': ' . ($lead['name'] !== '' ? $lead['name'] : $lead['email'])) . '?=', $body, $headers);
-
-// 3. MailerLite (optional)
+// 2. MailerLite (when a key is set)
 $synced = false;
 if ($config['MAILERLITE_API_KEY'] !== '' && function_exists('curl_init')) {
   $ml = static function (string $method, string $path, ?array $data = null) use ($config): array {
@@ -104,4 +97,13 @@ if ($config['MAILERLITE_API_KEY'] !== '' && function_exists('curl_init')) {
   if (!$synced) @file_put_contents($privateDir . '/io-mailerlite-errors.log', "$when $c " . json_encode($r) . "\n", FILE_APPEND);
 }
 
-reply($mailed || $synced || $csv !== false, 'Thanks', $wantsJson);
+// 3. Email to LEAD_TO. Newsletter signups are only emailed if MailerLite did not save them.
+$body = $labels[$type] . " — $when\n\n";
+foreach ($lead as $k => $v) if ($v !== '') $body .= ucfirst(str_replace('_', ' ', $k)) . ": $v\n";
+$body .= "\nPage: " . $clean($_SERVER['HTTP_REFERER'] ?? '', 300) . "\n";
+$headers = "From: Influencer Orbit Website <{$config['MAIL_FROM']}>\r\nReply-To: " . str_replace(["\n", "\r"], '', $lead['email']) . "\r\nContent-Type: text/plain; charset=utf-8";
+$mailed = ($type === 'newsletter' && $synced) ? false : @mail($config['LEAD_TO'], '=?UTF-8?B?' . base64_encode($labels[$type] . ': ' . ($lead['name'] !== '' ? $lead['name'] : $lead['email'])) . '?=', $body, $headers);
+
+// Success only if the lead reached your inbox or MailerLite. Otherwise the browser
+// opens the visitor's email app addressed to you, so the lead still reaches you.
+reply($mailed || $synced, $mailed || $synced ? 'Thanks' : 'Could not deliver', $wantsJson, $mailed || $synced ? 200 : 502);

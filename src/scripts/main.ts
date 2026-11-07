@@ -1,3 +1,4 @@
+import { SITE } from '../data/site';
 // Influencer Orbit: small progressive enhancements. The site works without this file.
 
 // Sticky header shadow + mobile sticky CTA
@@ -61,7 +62,7 @@ document.addEventListener('click', (e) => {
 const loadedAt = Date.now();
 document.querySelectorAll<HTMLInputElement>('form[data-form] input[name="ts"]').forEach((i) => { i.value = String(loadedAt); });
 const mailFallback = (form: HTMLFormElement, success: HTMLElement | null) => {
-  const mail = document.querySelector<HTMLAnchorElement>('a[href^="mailto:"]')?.href.replace('mailto:', '').split('?')[0] || '';
+  const mail = SITE.email;
   const lines: string[] = [];
   new FormData(form).forEach((v, k) => {
     const m = k.match(/^fields\[(.+)\]$/);
