@@ -29,7 +29,7 @@ if ($origin !== '' && !preg_match('#^https?://(www\.)?influencerorbit\.com$#i', 
 
 $f = $_POST['fields'] ?? [];
 if (!is_array($f)) $f = [];
-$type = in_array($_POST['form'] ?? '', ['audit', 'playbook', 'contact'], true) ? $_POST['form'] : 'contact';
+$type = in_array($_POST['form'] ?? '', ['audit', 'playbook', 'contact', 'newsletter'], true) ? $_POST['form'] : 'contact';
 $clean = static fn($v, int $max = 500): string => trim(mb_substr(str_replace(["\r", "\0"], '', strip_tags((string) $v)), 0, $max));
 
 $lead = [
@@ -46,8 +46,9 @@ $lead = [
 $started = (int) ($_POST['ts'] ?? 0);
 if (($_POST['company_url'] ?? '') !== '' || ($started > 0 && (time() * 1000 - $started) < 3000)) reply(true, 'Thanks', $wantsJson);
 
-if ($lead['name'] === '' || !filter_var($lead['email'], FILTER_VALIDATE_EMAIL)) reply(false, 'Please add your name and a valid email.', $wantsJson, 422);
-if ($type !== 'playbook' && $lead['website'] === '') reply(false, 'Please add your brand website.', $wantsJson, 422);
+if (!filter_var($lead['email'], FILTER_VALIDATE_EMAIL)) reply(false, 'Please add a valid email.', $wantsJson, 422);
+if ($type !== 'newsletter' && $lead['name'] === '') reply(false, 'Please add your name.', $wantsJson, 422);
+if (!in_array($type, ['playbook', 'newsletter'], true) && $lead['website'] === '') reply(false, 'Please add your brand website.', $wantsJson, 422);
 
 // Simple rate limit: 5 submissions per IP per 10 minutes
 $ip = $_SERVER['REMOTE_ADDR'] ?? '0';
@@ -59,7 +60,7 @@ $hits = array_filter((array) @json_decode((string) @file_get_contents($rlFile), 
 if (count($hits) >= 5) reply(false, 'Too many submissions. Please email us instead.', $wantsJson, 429);
 $hits[] = time(); @file_put_contents($rlFile, json_encode(array_values($hits)));
 
-$labels = ['audit' => 'Competitor Creator Audit request', 'playbook' => 'Playbook download', 'contact' => 'Website enquiry'];
+$labels = ['audit' => 'Competitor Creator Audit request', 'playbook' => 'Playbook download', 'contact' => 'Website enquiry', 'newsletter' => 'Newsletter signup'];
 $when = gmdate('Y-m-d H:i') . ' UTC';
 
 // 1. Private CSV backup
@@ -71,7 +72,7 @@ $body = $labels[$type] . " — $when\n\n";
 foreach ($lead as $k => $v) if ($v !== '') $body .= ucfirst(str_replace('_', ' ', $k)) . ": $v\n";
 $body .= "\nPage: " . $clean($_SERVER['HTTP_REFERER'] ?? '', 300) . "\n";
 $headers = "From: Influencer Orbit Website <{$config['MAIL_FROM']}>\r\nReply-To: " . str_replace(["\n", "\r"], '', $lead['email']) . "\r\nContent-Type: text/plain; charset=utf-8";
-$mailed = @mail($config['LEAD_TO'], '=?UTF-8?B?' . base64_encode($labels[$type] . ': ' . $lead['name']) . '?=', $body, $headers);
+$mailed = $type === 'newsletter' && $config['MAILERLITE_API_KEY'] !== '' ? false : @mail($config['LEAD_TO'], '=?UTF-8?B?' . base64_encode($labels[$type] . ': ' . ($lead['name'] !== '' ? $lead['name'] : $lead['email'])) . '?=', $body, $headers);
 
 // 3. MailerLite (optional)
 $synced = false;
@@ -84,7 +85,7 @@ if ($config['MAILERLITE_API_KEY'] !== '' && function_exists('curl_init')) {
     $res = (string) curl_exec($ch); $code = (int) curl_getinfo($ch, CURLINFO_HTTP_CODE); curl_close($ch);
     return [$code, (array) json_decode($res, true)];
   };
-  $groupNames = ['audit' => 'Audit requests', 'playbook' => 'Playbook downloads', 'contact' => 'Website enquiries'];
+  $groupNames = ['audit' => 'Audit requests', 'playbook' => 'Playbook downloads', 'contact' => 'Website enquiries', 'newsletter' => 'Newsletter'];
   $groupId = $config['GROUPS'][$type] ?? '';
   if ($groupId === '') { // find or create the group by name
     [$c, $r] = $ml('GET', '/groups?limit=100&filter[name]=' . rawurlencode($groupNames[$type]));

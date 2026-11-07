@@ -833,3 +833,22 @@ body { font-size: 17px; line-height: 1.7; }
 /* Mobile menu CTA: white text, icon inline, centred */
 .mobile-nav .btn.btn--primary { display: flex; align-items: center; justify-content: center; gap: 10px; color: #fff; padding: 0 var(--space-6); border-bottom: 0; }
 .mobile-nav .btn.btn--primary:hover { color: #fff; }
+
+/* Newsletter band in the footer */
+.footer-news { display: grid; gap: var(--space-6); padding: var(--space-8); margin-bottom: var(--space-12); border-radius: var(--radius-xl); background: rgba(255,255,255,0.05); border: 1px solid rgba(184,196,224,0.18); }
+@media (min-width: 1024px) { .footer-news { grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); align-items: center; gap: var(--space-12); padding: var(--space-8) var(--space-12); } }
+.footer-news__eyebrow { font: 600 13px/16px var(--font-sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--surface-tint); margin: 0 0 var(--space-2); }
+.footer-news h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(28px, 3vw, 36px); line-height: 1.1; letter-spacing: -0.02em; color: #fff; margin: 0 0 var(--space-3); text-transform: none; }
+.footer-news__copy p:last-child { margin: 0; color: var(--text-on-dark-muted); font-size: 16px; line-height: 26px; max-width: 46ch; }
+.news-form__row { display: grid; gap: var(--space-3); }
+@media (min-width: 640px) { .news-form__row { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) auto; align-items: end; } }
+.news-field { display: flex; flex-direction: column; gap: 6px; }
+.news-field label { font-size: 14px; font-weight: 600; color: var(--text-on-dark); }
+.news-field label span { font-weight: 400; color: var(--text-on-dark-muted); }
+.news-field input { height: 48px; padding: 0 14px; border-radius: var(--radius-sm); border: 1px solid #6B7A99; background: #fff; color: var(--text-strong); font: 400 16px/1 var(--font-sans); }
+.news-field input:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+.news-form .btn { height: 48px; white-space: nowrap; }
+.news-form .form-error { color: #FFD3C7; margin: 0 0 var(--space-3); font-size: 15px; }
+.news-success { background: rgba(216,232,255,0.12); color: #fff; }
+.news-success h3 { color: #fff; }
+.news-success p { margin: 0; color: var(--text-on-dark-muted); }

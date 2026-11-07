@@ -67,7 +67,7 @@ const mailFallback = (form: HTMLFormElement, success: HTMLElement | null) => {
     const m = k.match(/^fields\[(.+)\]$/);
     if (m && String(v).trim()) lines.push(`${m[1].replace(/_/g, ' ')}: ${v}`);
   });
-  const subject = form.dataset.form === 'audit' ? 'Competitor Creator Audit request' : form.dataset.form === 'playbook' ? 'Playbook request' : 'Website enquiry';
+  const subject = form.dataset.form === 'audit' ? 'Competitor Creator Audit request' : form.dataset.form === 'playbook' ? 'Playbook request' : form.dataset.form === 'newsletter' ? 'Newsletter signup' : 'Website enquiry';
   if (success) success.innerHTML = `<h3>Almost done.</h3><p>Your email app should open with your details filled in. Press send and we’ll reply within one business day. If nothing opened, email <a href="mailto:${mail}">${mail}</a>.</p>`;
   window.location.href = `mailto:${mail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 };

@@ -9,6 +9,6 @@ return [
   // MailerLite: Integrations → API → Generate new token. Leave empty to skip MailerLite.
   'MAILERLITE_API_KEY' => '',
   // Optional: MailerLite group IDs. Leave empty and the groups
-  // "Audit requests", "Playbook downloads" and "Website enquiries" are found or created by name.
-  'GROUPS' => ['audit' => '', 'playbook' => '', 'contact' => ''],
+  // "Audit requests", "Playbook downloads", "Website enquiries" and "Newsletter" are found or created by name.
+  'GROUPS' => ['audit' => '', 'playbook' => '', 'contact' => '', 'newsletter' => ''],
 ];

@@ -69,7 +69,8 @@ export const TIERS = [
 export const FORMS = {
   audit: '/api/lead.php',
   playbook: '/api/lead.php',
-  contact: '/api/lead.php'
+  contact: '/api/lead.php',
+  newsletter: '/api/lead.php'
 };
 
 // Analytics. Leave empty to load nothing.
