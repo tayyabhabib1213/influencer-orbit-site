@@ -4,51 +4,76 @@ import Icon from '../components/Icon.astro';
 import Brand from '../components/Brand.astro';
 import CtaButtons from '../components/CtaButtons.astro';
 import StatBar from '../components/StatBar.astro';
-import HeroVisual from '../components/HeroVisual.astro';
-import CreatorGrid from '../components/CreatorGrid.astro';
+import Tracker from '../components/Tracker.astro';
+import Marquee from '../components/Marquee.astro';
+import OrbitDiagram from '../components/OrbitDiagram.astro';
+import Plans from '../components/Plans.astro';
+import CompareTable from '../components/CompareTable.astro';
+import SectionHead from '../components/SectionHead.astro';
+import ReviewCard from '../components/ReviewCard.astro';
 import Faq from '../components/Faq.astro';
 import FinalCta from '../components/FinalCta.astro';
-import { TIERS, CTA, PROOF, PENDING, estherMonths } from '../data/site';
-import { HOME_FAQS, HOME_COMPARE } from '../data/content';
+import { PROOF, PENDING, PRICE_FROM, estherMonths } from '../data/site';
+import { HOME_FAQS, REVIEWS, CREATORS } from '../data/content';
 import { faqPage, person, services } from '../data/schema';
 const months = estherMonths();
+const caseImgs = CREATORS.filter((c) => ['creator-04', 'creator-05', 'creator-11', 'creator-03', 'creator-07', 'creator-09'].includes(c.file));
+const floats = [CREATORS[3], CREATORS[4], CREATORS[10]];
 ---
 <BaseLayout
-  title="Creator Seeding for Beauty Brands · Influencer Orbit"
-  description="Beauty influencer marketing agency: 50 to 150+ real creator posts a month for US skincare brands, guaranteed by day 60. Done for you."
+  title="Creator Seeding Agency for Beauty Brands · Influencer Orbit"
+  description="Guaranteed creator posts every month for DTC skincare and beauty brands, plus UGC with usage rights for your ads. Plans from $499/month."
   path="/"
   schema={[faqPage(HOME_FAQS), person(), ...services()]}
 >
-  <!-- 1. Hero -->
+  <!-- Hero -->
   <section class="hero" aria-labelledby="hero-title">
     <div class="container hero__inner">
-      <p class="eyebrow">The creator seeding operation for beauty brands</p>
-      <h1 id="hero-title" class="display-hero">We help US skincare and beauty brands get 50 to 150+ real creator posts every month, <em>guaranteed by day&nbsp;60</em>, without hiring an influencer team.</h1>
-      <p class="lead">With the Orbit Seeding Engine, every creator confirms before a single unit ships. You approve a brief and ship from your own warehouse. We find, vet, confirm and follow up until every post is live.</p>
+      <p class="eyebrow">Creator seeding for DTC beauty brands</p>
+      <h1 id="hero-title" class="h-hero">Creator posts you can count on. <em>Every month.</em></h1>
+      <p class="lead">We run your whole creator seeding operation: hand-vetted creators, confirmed before a single box ships, followed up until every post is live. Your best posts come back as ads. Your monthly post count is guaranteed by day&nbsp;60.</p>
       <CtaButtons micro="See the live tracker and a real monthly report before you commit to anything." />
+      <div class="trust-row">
+        <span class="trust-row__item"><img src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" /><span>client since {PROOF.estherSince}</span></span>
+        <span class="sep" aria-hidden="true"></span>
+        <span class="trust-row__item"><b>{PROOF.totalPosts}</b> creator posts live</span>
+        <span class="sep" aria-hidden="true"></span>
+        <span class="trust-row__item"><span class="platforms" role="img" aria-label="On TikTok, Instagram and YouTube"><Brand name="tiktok" decorative /><Brand name="instagram" decorative /><Brand name="youtube" decorative /></span>TikTok, Instagram, YouTube</span>
+      </div>
     </div>
-    <div class="container">
-      <HeroVisual />
-      <div class="hero__proof">
-        <img src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" />
-        <span>Seeding partner since {PROOF.estherSince} · {PROOF.totalPosts} creator posts live</span>
-        <span class="hero__platforms" role="img" aria-label="Platforms: Instagram, TikTok, YouTube"><Brand name="instagram" decorative /><Brand name="tiktok" decorative /><Brand name="youtube" decorative /></span>
+    <div class="stage">
+      <div class="container">
+        <div class="stage__inner">
+          {floats.map((c, i) => (
+            <figure class={`float-card float-card--${['a', 'b', 'c'][i]}`} style="margin:0" aria-hidden="true">
+              <img src={`/images/creators/${c.file}-${c.width}.webp`} width={c.width} height={Math.round(c.width * 1.25)} alt="" loading="eager" />
+              <span class="float-card__pill"><i></i>Live</span>
+            </figure>
+          ))}
+          <Tracker />
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 2. Proof bar -->
-  <div class="container stats-wrap"><StatBar /></div>
+  <!-- Proof numbers + creator wall -->
+  <section class="section" aria-labelledby="proof-strip-title" style="padding-bottom:0">
+    <div class="container">
+      <h2 id="proof-strip-title" class="sr-only">Influencer Orbit in numbers</h2>
+      <StatBar />
+    </div>
+    <div class="mt-12">
+      <Marquee />
+      <p class="marquee-caption">Real creator posts from the Esther Formula program, shared with the brand’s permission.</p>
+    </div>
+  </section>
 
-  <!-- 3. Problem -->
+  <!-- Problem -->
   <section class="section" aria-labelledby="problem-title">
     <div class="container">
-      <div class="section-head">
-        <h2 id="problem-title" class="display-lg">You didn’t build a skincare brand to <em>chase creators who never post</em>.</h2>
-        <p class="lead">Most creator programs don’t fail because of the wrong creators or the wrong strategy. They fail on operations: boxes ship, nobody follows up, and half the product never turns into a post.</p>
-      </div>
-      <div class="problem-grid">
-        <figure class="post-rate">
+      <SectionHead id="problem-title" eyebrow="The problem" title="Gifting is simple. <em>Getting posts back isn’t.</em>" lead="Most creator programs don’t fail on strategy. They fail on operations: boxes ship, nobody follows up, and half the product never turns into a post." />
+      <div class="problem">
+        <figure class="post-rate reveal">
           <figcaption class="post-rate__title">Posts you get back from every 100 boxes shipped</figcaption>
           <div class="post-rate__row">
             <div class="post-rate__label"><span>Cold gifting</span><b>30 to 50</b></div>
@@ -63,238 +88,263 @@ const months = estherMonths();
           </div>
           <p class="post-rate__note">Cold gifting range: <a href="https://blog.hypeauditor.com/how-to-get-influencers-to-post-about-your-brand-during-a-gifting-campaign/" target="_blank" rel="noopener">HypeAuditor</a>. Confirm-first: Influencer Orbit program data.</p>
         </figure>
-        <div class="problem-points">
-          <div class="problem-point">
-            <span class="icon-tile"><Icon name="search" /></span>
-            <p>You search your brand on TikTok and find almost nothing. Then you search a competitor with a weaker formula and scroll through dozens of real faces talking about them.</p>
+        <div class="problem__cards">
+          <div class="problem-card reveal">
+            <span class="icon-dot"><Icon name="package" /></span>
+            <div><h3>Boxes that disappear</h3><p>Product ships to creators who never confirmed. Three weeks later, half of it has turned into nothing.</p></div>
           </div>
-          <div class="problem-point">
-            <span class="icon-tile"><Icon name="package" /></span>
-            <p>You’ve tried. Eight hours a week of DMs. Boxes that shipped three weeks ago with nothing to show for it. Maybe a coordinator who is now at capacity, or an agency that sent your product to the wrong creators.</p>
+          <div class="problem-card reveal">
+            <span class="icon-dot"><Icon name="search" /></span>
+            <div><h3>Your competitors own TikTok search</h3><p>Search your brand and find almost nothing. Search a competitor with a weaker formula and scroll through dozens of real faces.</p></div>
           </div>
-          <div class="problem-point">
-            <span class="icon-tile"><Icon name="badge-dollar-sign" /></span>
-            <p>Cold gifting programs see only 30% to 50% of creators actually post (<a href="https://blog.hypeauditor.com/how-to-get-influencers-to-post-about-your-brand-during-a-gifting-campaign/" target="_blank" rel="noopener">HypeAuditor</a>). Meanwhile US Meta prices per ad rose 23% year over year in Q3 2026, and your ad creative burns out every few weeks with nothing behind it.</p>
+          <div class="problem-card reveal">
+            <span class="icon-dot"><Icon name="badge-dollar-sign" /></span>
+            <div><h3>Ads that burn out</h3><p>US Meta prices per ad rose 23% year over year in Q3 2026, and your creative dies every few weeks with nothing fresh behind it.</p></div>
           </div>
         </div>
       </div>
-      <div class="problem-answer">
-        <p class="problem-answer__claim">The problem isn’t creator seeding. It’s running it by hand, or capping it at what one person can manage.</p>
-        <p>That’s where we come in. Influencer Orbit takes founder-led beauty brands from 5 to 15 scattered posts a month to 50 to 150+ confirmed creator posts, using the Orbit Seeding Engine. It’s built for founders who want the channel to run without them and judge it in cost per post, not impressions.</p>
-      </div>
-      <div class="definition">
-        <h3 id="def-title">What is product seeding?</h3>
-        <p>Product seeding is sending your product, free, to hand-picked creators so they post about it in their own words. Done at volume, it builds social proof, TikTok search presence and a steady supply of ad-ready UGC for far less than paid placements. The hard part is operations: finding, vetting, confirming, shipping and following up with every creator.</p>
+      <div class="answer-band reveal">
+        <p class="answer-band__claim">The problem isn’t creator seeding. It’s running it by hand.</p>
+        <p>Influencer Orbit runs the whole operation for you, from 12 to 150+ guaranteed creator posts a month, with UGC you’re allowed to run as ads. You approve a brief and ship product. We do everything else.</p>
       </div>
     </div>
   </section>
 
-  <!-- 5. How it works -->
+  <!-- Solution: the orbit -->
+  <section class="section section--soft" aria-labelledby="orbit-title">
+    <div class="container orbit-wrap">
+      <div>
+        <SectionHead id="orbit-title" left eyebrow="Our solution" title="Everything around your brand, <em>in one orbit</em>." lead="One team runs every part of creator seeding, so nothing falls between the cracks of freelancers, tools and spreadsheets." />
+        <div class="feature-list">
+          <div class="feature"><span class="icon-dot"><Icon name="circle-check" /></span><div><h3>Confirm-first seeding</h3><p>No creator gets product until they confirm. That one rule is why 70%+ of our creators post.</p></div></div>
+          <div class="feature"><span class="icon-dot"><Icon name="video" /></span><div><h3>UGC you can run as ads</h3><p>Every plan includes creator videos with usage rights, at least 30% of your posts, plus Spark Ads codes.</p></div></div>
+          <div class="feature"><span class="icon-dot"><Icon name="handshake" /></span><div><h3>You own every relationship</h3><p>Every creator contact, content link and the tracker stay yours, even if you leave.</p></div></div>
+        </div>
+      </div>
+      <OrbitDiagram />
+    </div>
+  </section>
+
+  <!-- How it works -->
   <section class="section" id="how-it-works" aria-labelledby="how-title">
     <div class="container">
-      <div class="section-head section-head--center">
-        <h2 id="how-title" class="display-lg">The Orbit Seeding Engine runs in <em>four steps</em>.</h2>
-        <p class="lead">One rule runs through all of them: no creator gets product until they confirm. That single change is why 70%+ of our creators post, against 30% to 50% for cold gifting.</p>
-      </div>
+      <SectionHead id="how-title" eyebrow="How it works" title="The Orbit Seeding Engine: <em>four phases</em>, one rule." lead="No creator gets product until they confirm. Everything else is built around getting real posts live on schedule." />
       <ol class="steps">
         <li class="step reveal">
-          <div class="step__top"><span class="icon-tile"><Icon name="scan-search" /></span><span class="step__when">Days 1–5</span></div>
-          <h3>Competitor Creator Audit</h3>
-          <p>We map which creators already post for three of your direct competitors, which hooks get the most views, and which formats win in your category. That becomes your brief and outreach scripts, approved by you. Outreach goes live by day 5.</p>
+          <div class="step__top"><span class="step__n">1</span><span class="step__when">Days 1 to 5</span></div>
+          <h3>Map</h3>
+          <p>A Competitor Creator Audit shows which creators post for your top 3 competitors and which hooks win. It becomes your brief.</p>
         </li>
         <li class="step reveal">
-          <div class="step__top"><span class="icon-tile"><Icon name="user-check" /></span><span class="step__when">Days 5–21</span></div>
-          <h3>Confirm-first seeding</h3>
-          <p>We hand-vet creators for audience fit, engagement quality and content match, not follower count. Every creator confirms before your warehouse ships anything. You get confirmed addresses daily.</p>
+          <div class="step__top"><span class="step__n">2</span><span class="step__when">Days 5 to 21</span></div>
+          <h3>Match &amp; Ship</h3>
+          <p>We hand-vet creators for audience fit, not follower count. Each one confirms before your warehouse ships.</p>
         </li>
         <li class="step reveal">
-          <div class="step__top"><span class="icon-tile"><Icon name="circle-play" /></span><span class="step__when">Day 21 on</span></div>
-          <h3>Posts live and tracked</h3>
-          <p>Posts go live and we chase every one until it shows in your live tracker. You see every creator, shipment and post link in real time.</p>
+          <div class="step__top"><span class="step__n">3</span><span class="step__when">Day 21 on</span></div>
+          <h3>Go Live</h3>
+          <p>We follow up until every post is live, and you watch it happen in a live tracker you own.</p>
         </li>
         <li class="step reveal">
-          <div class="step__top"><span class="icon-tile"><Icon name="zap" /></span><span class="step__when">Day 30 on</span></div>
-          <h3>Amplify and report</h3>
-          <p>Your best posts become Spark Ads, and top performers join your VIP Creator Roster for repeat seeding and paid collabs. Your first monthly report lands on day 30.</p>
+          <div class="step__top"><span class="step__n">4</span><span class="step__when">Day 30 on</span></div>
+          <h3>Amplify</h3>
+          <p>Your best posts become Spark Ads, and top creators join your VIP Creator Roster for repeat seeding.</p>
         </li>
       </ol>
-      <div class="center-note">
-        <p class="muted">Each step removes a reason seeding programs stall: wrong creators, ghosted boxes, and good posts that never become ads.</p>
-        <p><a class="text-link" href="/creator-seeding">See the full process and pricing <Icon name="arrow-right" /></a></p>
+      <div class="timeline-strip">
+        <div><b>21 days</b><span>to your first creator posts</span></div>
+        <div><b>Day 60</b><span>your monthly post count, guaranteed</span></div>
+        <div><b>{PROOF.postRate}</b><span>of our gifted creators post</span></div>
       </div>
     </div>
   </section>
 
-  <!-- 6. Who it's for -->
-  <section class="section section--white" aria-labelledby="fit-title">
+  <!-- What's included -->
+  <section class="section section--soft" aria-labelledby="included-title">
     <div class="container">
-      <div class="section-head">
-        <h2 id="fit-title" class="display-lg">Built for founders who think in <em>cost per post</em>.</h2>
-        <p class="lead">This is for you if you run a US DTC skincare, cosmetics or beauty brand and you:</p>
+      <SectionHead id="included-title" eyebrow="What you get" title="A full creator team, <em>without the hire</em>." lead="Everything a strong in-house influencer team would do, run on a system that’s been tested every month since January 2024." />
+      <div class="grid grid--4">
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="scan-search" /></span><h3>Competitor Creator Audit</h3><p>See who already posts for your competitors and what wins in your category.</p></div>
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="user-check" /></span><h3>Hand-vetted creators</h3><p>Picked for audience fit, engagement quality and content match.</p></div>
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="send" /></span><h3>Outreach and confirmation</h3><p>We negotiate, brief and confirm every creator before anything ships.</p></div>
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="truck" /></span><h3>Shipping coordination</h3><p>Confirmed addresses go to your warehouse daily, ready to ship.</p></div>
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="repeat" /></span><h3>Follow-up to live</h3><p>We chase every creator until the post is up, not just the easy ones.</p></div>
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="video" /></span><h3>UGC with usage rights</h3><p>Creator videos you’re allowed to run in your own ads, every month.</p></div>
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="zap" /></span><h3>Spark Ads and whitelisting</h3><p>Your top posts flagged, with codes secured so your media buyer can run them.</p></div>
+        <div class="card card--hover reveal"><span class="icon-dot icon-dot--soft"><Icon name="chart-no-axes-column" /></span><h3>Live tracker and reports</h3><p>Every creator, shipment and post link in real time, plus a report you can act on.</p></div>
       </div>
-      <div class="fit-panels">
-        <div class="fit-panel fit-panel--yes">
-          <h3><Icon name="circle-check" />A good fit</h3>
-          <ul class="fit">
-            <li><Icon name="check" /><span>Want your brand showing up when shoppers search your product or hero ingredient on TikTok</span></li>
-            <li><Icon name="check" /><span>Gift product now but get 5 to 15 posts a month, or have plateaued at what one coordinator can handle</span></li>
-            <li><Icon name="check" /><span>Are tired of boxes that vanish, agencies that report “estimated reach”, and ad creative that dies every three weeks</span></li>
-          </ul>
-          <div class="fit-panel__foot">
-            <p><strong>We work best with</strong> Shopify-native brands doing $500K to $10M a year, with 2 to 50 people, who can approve a brief in 48 hours and ship within three business days.</p>
-            <div class="chips" aria-label="Ideal client profile">
-              <span class="chip"><Icon name="badge-dollar-sign" />$500K to $10M a year</span>
-              <span class="chip"><Icon name="users" />2 to 50 people</span>
-              <span class="chip"><Icon name="globe" />DTC Beauty</span>
-              <span class="chip"><Icon name="store" />Shopify-native</span>
-            </div>
-          </div>
-        </div>
-        <div class="fit-panel fit-panel--no">
-          <h3><Icon name="circle-x" />The wrong fit if</h3>
-          <ul class="fit fit--no">
-            <li><Icon name="minus" /><span>Your warehouse can’t ship within three business days of creator confirmations</span></li>
-            <li><Icon name="minus" /><span>You can’t approve briefs within 48 hours</span></li>
-            <li><Icon name="minus" /><span>You need a guarantee on views or sales rather than posts</span></li>
-            <li><Icon name="minus" /><span>You’re outside US skincare, cosmetics or beauty</span></li>
-          </ul>
-          <div class="fit-panel__foot">
-            <p class="muted">We’ll tell you on the call, not after you’ve paid.</p>
-          </div>
-        </div>
-      </div>
-      <div class="situations">
-        <div class="situation">
-          <span class="icon-tile"><Icon name="clock" /></span>
-          <div><h3>If you’re running seeding yourself</h3><p>You get 10x the volume back without adding headcount, and your 8 hours a week back.</p></div>
-        </div>
-        <div class="situation">
-          <span class="icon-tile"><Icon name="handshake" /></span>
-          <div><h3>If you already have a coordinator</h3><p>We import your roster and tracker and work alongside your current setup. Volume grows. It never restarts.</p></div>
-        </div>
-      </div>
-      <div class="center-cta"><CtaButtons /></div>
     </div>
   </section>
 
-  <!-- 7. Proof -->
-  <section class="section" aria-labelledby="proof-title">
+  <!-- Mid CTA band -->
+  <section class="section" aria-labelledby="band-title" style="padding-bottom:0">
     <div class="container">
-      <div class="section-head">
-        <h2 id="proof-title" class="display-lg"><span data-months>{months}</span> months. Same client. <em>Here’s what that looks like.</em></h2>
-      </div>
-      <div class="proof-card reveal">
-        <div>
-          <img class="proof-card__logo" src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" loading="lazy" />
-          <p>We’ve run the creator seeding operation for Esther Formula, a Korean skincare and beauty supplement brand, since January 2024.</p>
-          <ul class="checks">
-            <li><Icon name="check" /><span>2,000+ creator collaborations and {PROOF.totalPosts} creator posts live</span></li>
-            <li><Icon name="check" /><span>70%+ post rate under confirm-first, against 30% to 50% for cold gifting</span></li>
-            <li><Icon name="check" /><span>50 to 200 creator posts live every month, for <span data-months>{months}</span> months straight</span></li>
-            <li><Icon name="check" /><span>200+ product shipments coordinated every month, with no in-house influencer manager ever hired</span></li>
-          </ul>
-          {PENDING.estherTestimonial && (
-            <blockquote class="testimonial"><p>“{PENDING.estherTestimonial.quote}”</p><footer class="mt-4 small">— {PENDING.estherTestimonial.name}, {PENDING.estherTestimonial.title}, Esther Formula</footer></blockquote>
-          )}
-          <p class="mt-6"><a class="text-link" href="/case-studies">Read the full case studies <Icon name="arrow-right" /></a></p>
-        </div>
-        <CreatorGrid count={9} />
+      <div class="band on-dark reveal">
+        <svg class="band__orbit" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#BCD3FF" stroke-width="1.2"><ellipse cx="200" cy="200" rx="190" ry="70" transform="rotate(-20 200 200)"/><ellipse cx="200" cy="200" rx="140" ry="50" transform="rotate(-20 200 200)"/></g></svg>
+        <h2 id="band-title" class="h-xl">Stop shipping product into the void. <em>Start counting posts.</em></h2>
+        <p>In 20 minutes we’ll show you the live tracker, the report you’d get, and the cost-per-post math against what you spend now.</p>
+        <div class="mt-8"><CtaButtons dark secondary={false} micro={false} /></div>
       </div>
     </div>
   </section>
 
-  <!-- 8. Pricing preview -->
-  <section class="section section--white" aria-labelledby="price-title">
+  <!-- Plans -->
+  <section class="section" id="plans" aria-labelledby="plans-title">
     <div class="container">
-      <div class="section-head section-head--center">
-        <h2 id="price-title" class="display-lg">Priced per program. <em>Measured per post.</em></h2>
-        <p class="lead">One offer in three tiers, from $1,500 a month. Every tier starts with a 60-day pilot, then runs month to month.</p>
+      <SectionHead id="plans-title" eyebrow="Plans" title="Pick your volume. <em>We guarantee it.</em>" lead="Four plans, each with a guaranteed monthly post count and UGC with usage rights. Every plan starts with a 60-day pilot, then runs month to month." />
+      <div class="center"><p class="from-price"><Icon name="badge-dollar-sign" />Plans from <b>{PRICE_FROM}</b>/month<span class="from-price__extra"> · exact quote on a 20-minute call</span></p></div>
+      <Plans />
+      <div class="pricing-note">
+        <span><Icon name="shield-check" />Post count guaranteed by day 60</span>
+        <span><Icon name="clock" />First posts within 21 days</span>
+        <span><Icon name="repeat" />Month to month after the pilot</span>
       </div>
-      <div class="tiers">
-        {TIERS.map((t) => (
-          <article class={`tier${t.popular ? ' tier--popular' : ''}`}>
-            {t.popular && <span class="tier__badge">Most popular</span>}
-            <h3>{t.name}</h3>
-            <p class="tier__price">${t.price.toLocaleString('en-US')}<span> / month</span></p>
-            <p class="tier__posts"><strong>{t.posts.split(',')[0]}</strong> creator posts a month</p>
-            <p class="tier__meta">Management cost {t.perPost} per post</p>
-            <p>{t.bestFor}</p>
-            <a class="btn btn--secondary" href="/creator-seeding#pricing">See what’s included</a>
-          </article>
-        ))}
-      </div>
+      <p class="center mt-6"><a class="text-link" href="/creator-seeding#pricing">Compare every plan in detail <Icon name="arrow-right" /></a></p>
     </div>
   </section>
 
-  <!-- 9. Guarantee -->
-  <section class="section" aria-labelledby="guarantee-title">
+  <!-- Guarantee -->
+  <section class="section section--tight" style="padding-bottom:0" aria-labelledby="guarantee-title">
     <div class="container">
       <div class="guarantee reveal">
-        <p class="guarantee__label"><Icon name="shield-check" />The guarantee</p>
-        <h2 id="guarantee-title" class="display-lg">Your post count, live by day&nbsp;60. <em>In writing.</em></h2>
-        <p>Pick your tier. If your tier’s monthly post count isn’t live by day 60, month three is free and we keep working with no management fee until it is. You keep every creator contact, every content link and the tracker, whether you stay or not.</p>
-        <p class="fine">We guarantee posts, not views. Posting is what we control. The algorithm isn’t.</p>
-        <div class="mt-8"><CtaButtons dark micro={false} secondary={false} /></div>
+        <div>
+          <p class="guarantee__label"><Icon name="shield-check" />The guarantee</p>
+          <h2 id="guarantee-title" class="h-xl">Your post count, live by day&nbsp;60. <em>In writing.</em></h2>
+          <p class="mt-6">First creator posts go live within 21 days. Your plan’s monthly post count is hit by day 60, counted from when you ship product. If we miss it, we keep working at no charge until we hit it.</p>
+          <p class="fine">We guarantee posts, not views. Posting is what we control. The algorithm isn’t.</p>
+        </div>
+        <div class="guarantee__seal">
+          <div class="seal-row"><Icon name="timer" /><div><b>21 days</b><span>to first creator posts</span></div></div>
+          <div class="seal-row"><Icon name="target" /><div><b>Day 60</b><span>monthly post count hit</span></div></div>
+          <div class="seal-row"><Icon name="handshake" /><div><b>No charge</b><span>until we hit it, if we miss</span></div></div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- 10. Comparison -->
-  <section class="section section--white" aria-labelledby="compare-title">
+  <!-- Case study -->
+  <section class="section" aria-labelledby="case-title">
     <div class="container">
-      <div class="section-head section-head--center">
-        <h2 id="compare-title" class="display-lg"><em>Influencer Orbit</em> vs. an in&#8209;house hire vs. a typical agency</h2>
-      </div>
-      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="compare-title">
-        <table class="data-table">
-          <thead><tr><th scope="col"><span class="sr-only">Feature</span></th>{HOME_COMPARE.cols.map((c, i) => <th scope="col" class={i === 0 ? 'is-us' : ''}>{c}</th>)}</tr></thead>
-          <tbody>
-            {HOME_COMPARE.rows.map(([label, ...cells]) => (
-              <tr><th scope="row">{label}</th>{cells.map((c, i) => <td class={i === 0 ? 'is-us' : ''}>{c}</td>)}</tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
-      <p class="table-note center">In-house cost is a US influencer marketing coordinator’s salary before software. Full comparison, including software and marketplaces, on the <a href="/creator-seeding#compare">Seeding Engine page</a>.</p>
+      <SectionHead id="case-title" eyebrow="Case study" title="One beauty brand. <span data-months>{months}</span> months. <em>Every single month.</em>" lead="We keep our proof deep, not wide: the same client, the same system, month after month." />
+      <article class="case reveal">
+        <div class="case__media">
+          {caseImgs.map((c) => (
+            <picture>
+              <source type="image/avif" srcset={`/images/creators/${c.file}-${c.width}.avif`} />
+              <img src={`/images/creators/${c.file}-${c.width}.webp`} width={c.width} height={Math.round(c.width * 1.25)} alt={c.alt} loading="lazy" decoding="async" />
+            </picture>
+          ))}
+        </div>
+        <div class="case__body">
+          <div class="case__tags"><span class="tag">Skincare + supplements</span><span class="tag">Since Jan 2024</span></div>
+          <img class="case__logo" src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" loading="lazy" />
+          <h3>50 to 200 creator posts a month, without hiring an influencer manager</h3>
+          <p class="muted">Esther Formula, a Korean skincare and beauty supplement brand, has run its creator seeding operation with us since January 2024.</p>
+          <div class="case__metrics">
+            <div><b>{PROOF.collaborations}</b><span>creator collaborations</span></div>
+            <div><b>{PROOF.totalPosts}</b><span>creator posts live</span></div>
+            <div><b>{PROOF.postRate}</b><span>post rate, confirm-first</span></div>
+            <div><b>{PROOF.shipmentsPerMonth}</b><span>shipments a month</span></div>
+          </div>
+          <a class="text-link" href="/case-studies">Read the case study <Icon name="arrow-right" /></a>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- 11. Founder -->
-  <section class="section" aria-labelledby="founder-title">
-    <div class="container founder founder--center">
+  <!-- Testimonials -->
+  <section class="section section--soft" aria-labelledby="reviews-title">
+    <div class="container">
+      <SectionHead id="reviews-title" eyebrow="Testimonials" title="What clients <em>say about us</em>" />
+      {PENDING.estherVideo && (
+        <div class="video-feature">
+          <div class="video-card"><video src={PENDING.estherVideo.src} poster={PENDING.estherVideo.poster} controls preload="none" playsinline aria-label={`Video testimonial from ${PENDING.estherVideo.name}, Esther Formula`}></video></div>
+          <div>
+            <img src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" style="width:200px" loading="lazy" />
+            <p class="h-lg mt-6">Hear it from the Esther Formula team.</p>
+            <p class="muted mt-4">{PENDING.estherVideo.name}, {PENDING.estherVideo.title}, Esther Formula</p>
+          </div>
+        </div>
+      )}
+      {PENDING.estherTestimonial && (
+        <blockquote class="card mt-6" style="max-width:860px;margin:0 auto 32px"><p class="h-md" style="color:var(--text)">“{PENDING.estherTestimonial.quote}”</p><footer class="muted mt-4">{PENDING.estherTestimonial.name}, {PENDING.estherTestimonial.title}, Esther Formula</footer></blockquote>
+      )}
+      <div class="reviews">
+        {REVIEWS.map((r) => <ReviewCard {...r} />)}
+      </div>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="section" aria-labelledby="compare-title">
+    <div class="container">
+      <SectionHead id="compare-title" eyebrow="Why us" title="How we’re <em>different</em>" lead="The three options most founders weigh, side by side." />
+      <CompareTable labelledby="compare-title" />
+      <p class="table-note">In-house cost is a US influencer marketing coordinator’s salary before software.</p>
+    </div>
+  </section>
+
+  <!-- Founder -->
+  <section class="section section--soft" aria-labelledby="founder-title">
+    <div class="container founder">
       <div class="founder__photo">
         <picture>
-          <source type="image/avif" srcset="/images/brand/tayyab-habib-480.avif 480w, /images/brand/tayyab-habib-800.avif 800w" sizes="(min-width: 1024px) 380px, 90vw" />
-          <img src="/images/brand/tayyab-habib-800.webp" srcset="/images/brand/tayyab-habib-480.webp 480w, /images/brand/tayyab-habib-800.webp 800w" sizes="(min-width: 1024px) 380px, 90vw" width="800" height="800" alt="Tayyab Habib, founder of Influencer Orbit" loading="lazy" />
+          <source type="image/avif" srcset="/images/brand/tayyab-habib-480.avif 480w, /images/brand/tayyab-habib-800.avif 800w" sizes="(min-width: 1024px) 420px, 90vw" />
+          <img src="/images/brand/tayyab-habib-800.webp" srcset="/images/brand/tayyab-habib-480.webp 480w, /images/brand/tayyab-habib-800.webp 800w" sizes="(min-width: 1024px) 420px, 90vw" width="800" height="800" alt="Tayyab Habib, founder of Influencer Orbit" loading="lazy" />
         </picture>
+        <div class="founder__badge"><img src="/images/brand/app-icon-192.png" width="36" height="36" alt="" /><div><b>Tayyab Habib</b>Founder, Influencer Orbit</div></div>
       </div>
-      <div class="prose">
-        <h2 id="founder-title" class="display-lg">Hi, I’m Tayyab, <em>founder of Influencer Orbit</em>.</h2>
-        <p class="mt-6">After running influencer work for 100+ brands, I noticed the same thing in almost every gifting program: product went out, half the creators never posted, and nobody followed up.</p>
-        <p>That’s why we built the Orbit Seeding Engine, a confirm-first seeding operation with one job: real creator posts, every month, at volume.</p>
-        <p>We’ve run it for the same beauty brand for <span data-months>{months}</span> months, across 2,000+ creator collaborations. I care about one number more than any other: posts against target.</p>
+      <div class="founder__text">
+        <p class="eyebrow">Meet the founder</p>
+        <h2 id="founder-title" class="h-xl">I care about one number: <em>posts against target.</em></h2>
+        <p class="mt-6">After running influencer work for 100+ brands, I saw the same thing in almost every gifting program: product went out, half the creators never posted, and nobody followed up.</p>
+        <p>So we built the Orbit Seeding Engine, a confirm-first operation with one job: real creator posts, every month, at volume. We’ve run it for the same beauty brand for <span data-months>{months}</span> months.</p>
         <p class="founder__sign">Tayyab Habib</p>
-        <a class="btn btn--primary mt-6" href="/book" data-cta="founder"><Icon name="calendar" />Want to work together? Book a call.</a>
+        <a class="btn btn--primary mt-6" href="/book" data-cta="founder"><Icon name="calendar" />Book a call with Tayyab</a>
       </div>
     </div>
   </section>
 
-  <!-- 12. FAQ -->
-  <section class="section section--white" aria-labelledby="faq-title">
+  <!-- FAQ -->
+  <section class="section" aria-labelledby="faq-title">
     <div class="container">
-      <div class="section-head section-head--center">
-        <h2 id="faq-title" class="display-lg">Questions founders ask <em>before booking</em></h2>
-      </div>
-      <div class="faq-center"><Faq items={HOME_FAQS} /></div>
-      <p class="center-note"><a class="text-link" href="/creator-seeding#faq">More answers on the Seeding Engine page <Icon name="arrow-right" /></a></p>
+      <SectionHead id="faq-title" eyebrow="FAQ" title="Questions founders ask <em>before booking</em>" />
+      <Faq items={HOME_FAQS} />
+      <p class="center mt-8"><a class="text-link" href="/creator-seeding#faq">See all questions <Icon name="arrow-right" /></a></p>
     </div>
   </section>
 
-  <!-- 13. Final CTA -->
+  <!-- Free resources -->
+  <section class="section section--soft" aria-labelledby="resources-title">
+    <div class="container">
+      <SectionHead id="resources-title" eyebrow="Free resources" title="Start for free, <em>no call needed</em>" />
+      <div class="grid grid--3">
+        <a class="card card--hover resource" href="/competitor-audit">
+          <span class="resource__media"><Icon name="scan-search" /></span>
+          <h3>Free Competitor Creator Audit</h3>
+          <p>See which creators already post for your top 3 competitors, and which hooks win. Delivered in 5 business days.</p>
+          <span class="text-link">Get your audit <Icon name="arrow-right" /></span>
+        </a>
+        <a class="card card--hover resource" href="#newsletter">
+          <span class="resource__media"><Icon name="mail" /></span>
+          <h3>The Seeding Report</h3>
+          <p>One short email a month on what’s working in creator seeding for beauty brands, with plays you can copy.</p>
+          <span class="text-link">Subscribe free <Icon name="arrow-right" /></span>
+        </a>
+        <a class="card card--hover resource" href="/case-studies">
+          <span class="resource__media"><Icon name="file-text" /></span>
+          <h3>The Esther Formula case study</h3>
+          <p>How one rule took a gifting program to a 70%+ post rate and {PROOF.totalPosts} posts live.</p>
+          <span class="text-link">Read the story <Icon name="arrow-right" /></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <FinalCta
-    title="Ready to see <em>100+ creator posts</em> go live next month?"
-    text="Let’s talk. In 20 minutes we’ll show you the live Esther Formula tracker and the exact monthly report you’d receive. Then we’ll run the cost-per-post math against what you spend now."
+    title="Ready to see your posts <em>go live next month</em>?"
+    text="In 20 minutes we’ll show you the live tracker and the report you’d receive, then run the cost-per-post math against what you spend now."
     secondary={false}
-    micro='Not ready for a call? <a href="/competitor-audit">Get your free Competitor Creator Audit</a> and see which creators already post for your top 3 competitors.'
+    micro='Not ready for a call? <a href="/competitor-audit">Get your free Competitor Creator Audit</a>.'
   />
 </BaseLayout>

@@ -1,0 +1,20 @@
+---
+// Infinite strip of real creator posts from the Esther Formula program.
+import { CREATORS } from '../data/content';
+const items = CREATORS.filter((c) => !['creator-08', 'creator-10', 'creator-12'].includes(c.file));
+const loop = [...items, ...items];
+const size = (c: { width: number }) => (c.width > 320 ? 320 : c.width);
+---
+<div class="marquee" aria-label="Real creator posts from the Esther Formula program">
+  <div class="marquee__track">
+    {loop.map((c, i) => (
+      <figure class="post-tile" style="margin:0" aria-hidden={i >= items.length ? 'true' : undefined}>
+        <picture>
+          <source type="image/avif" srcset={`/images/creators/${c.file}-${size(c)}.avif`} />
+          <img src={`/images/creators/${c.file}-${size(c)}.webp`} width={size(c)} height={Math.round(size(c) * 1.25)} alt={c.alt} decoding="async" />
+        </picture>
+        <span class="post-tile__pill"><i></i>Posted</span>
+      </figure>
+    ))}
+  </div>
+</div>

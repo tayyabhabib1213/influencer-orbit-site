@@ -1,0 +1,10 @@
+---
+interface Props { id: string; eyebrow?: string; title: string; lead?: string; size?: 'xl' | 'lg'; left?: boolean }
+const { id, eyebrow, title, lead, size = 'xl', left = false } = Astro.props;
+---
+<div class={`section-head${left ? ' section-head--left' : ''}`}>
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h2 id={id} class={size === 'xl' ? 'h-xl' : 'h-lg'} set:html={title} />
+  {lead && <p class="lead" set:html={lead} />}
+  <slot />
+</div>

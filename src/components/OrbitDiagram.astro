@@ -1,0 +1,28 @@
+---
+// The Influencer Orbit: everything we run, circling your brand.
+import Icon from './Icon.astro';
+const outer = [
+  { label: 'Competitor audit', icon: 'scan-search', a: 0 },
+  { label: 'Spark Ads', icon: 'zap', a: 60 },
+  { label: 'VIP roster', icon: 'star', a: 120 },
+  { label: 'Confirm before shipping', icon: 'circle-check', a: 180, hot: true },
+  { label: 'Follow-ups', icon: 'repeat', a: 240 },
+  { label: 'Live tracker', icon: 'chart-no-axes-column', a: 300 }
+];
+const inner = [
+  { label: 'Vetted creators', icon: 'user-check', a: 90 },
+  { label: 'UGC rights', icon: 'video', a: 270 }
+];
+const pos = (a: number, r: number) => `left:${50 + r * Math.sin((a * Math.PI) / 180)}%;top:${50 - r * Math.cos((a * Math.PI) / 180)}%`;
+---
+<figure class="orbit" style="margin:0" role="img" aria-label="Diagram: your brand at the centre, surrounded by everything Influencer Orbit runs: competitor audit, vetted creators, confirmation before shipping, follow-ups, live tracker, UGC with usage rights, Spark Ads and a VIP creator roster.">
+  <span class="orbit__ring orbit__ring--3"></span>
+  <span class="orbit__satellite" aria-hidden="true"></span>
+  <span class="orbit__ring orbit__ring--2"></span>
+  <span class="orbit__ring orbit__ring--1"></span>
+  <div class="orbit__spin" aria-hidden="true">
+    {outer.map((c, i) => (<span class={`orbit__chip${c.hot ? ' orbit__chip--hot' : ''}`} style={`${pos(c.a, 40)};animation-delay:-${i * 0.7}s`}><Icon name={c.icon} />{c.label}</span>))}
+    {inner.map((c, i) => (<span class="orbit__chip" style={`${pos(c.a, 26)};animation-delay:-${i * 1.3 + 0.4}s`}><Icon name={c.icon} />{c.label}</span>))}
+  </div>
+  <span class="orbit__core" aria-hidden="true"><img src="/images/brand/mark.svg" alt="" width="64" height="40" /></span>
+</figure>

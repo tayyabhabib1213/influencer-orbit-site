@@ -1,0 +1,28 @@
+---
+// Plan cards. No prices on the site except the single "from" price.
+import Icon from './Icon.astro';
+import { TIERS } from '../data/site';
+interface Props { detailed?: boolean }
+const { detailed = false } = Astro.props;
+---
+<div class="plans">
+  {TIERS.map((t) => (
+    <article class={`plan${t.popular ? ' plan--popular' : ''}`} id={t.id} aria-labelledby={`plan-${t.id}`}>
+      {t.popular && <span class="plan__badge"><Icon name="star" />Most popular</span>}
+      <h3 class="plan__name" id={`plan-${t.id}`}>{t.name}</h3>
+      <p class="plan__tagline">{t.tagline}</p>
+      <p class="plan__hero"><b>{t.posts}</b><span>creator posts a month, guaranteed</span></p>
+      <p class="plan__sub">{t.custom ? 'Custom volume across one or more markets' : 'Hit by day 60, or we work free until it is'}</p>
+      <div class="plan__ugc"><Icon name="video" /><span><b>{t.ugc} UGC assets</b> with usage rights for your ads</span></div>
+      <ul class="plan__list">
+        <li><Icon name="check" /><span>Creator research, outreach, shipping coordination and post tracking</span></li>
+        <li><Icon name="check" /><span>{t.spark}</span></li>
+        <li><Icon name="check" /><span>{t.calls}</span></li>
+        <li><Icon name="check" /><span>{t.reporting}</span></li>
+        {detailed && <li><Icon name="check" /><span>Live shared tracker you own</span></li>}
+      </ul>
+      <p class="plan__fit"><strong>Best for:</strong> {t.bestFor}</p>
+      <a class={`btn ${t.popular ? 'btn--primary' : 'btn--secondary'}`} href="/book" data-cta={`plan-${t.id}`}>{t.cta}<Icon name="arrow-right" /></a>
+    </article>
+  ))}
+</div>

@@ -1,4 +1,4 @@
-import { SITE, PROOF, TIERS, estherMonths } from '../data/site';
+import { SITE, PROOF, TIERS, PRICE_FROM, ADDONS, estherMonths } from '../data/site';
 import { ABOUT_FACT } from '../data/schema';
 
 export function GET() {
@@ -8,8 +8,8 @@ export function GET() {
 > ${ABOUT_FACT}
 
 ## Key facts
-- What: done-for-you creator seeding (gifted product seeding, UGC for ads, paid creator collabs, Spark Ads and whitelisting setup)
-- Who for: US DTC skincare, cosmetics and beauty brands doing $500K+ a year with 2 to 50 people, including brands already running 50 to 100+ creator posts a month in-house
+- What: done-for-you creator seeding (gifted product seeding, UGC with usage rights for ads, paid creator collabs, Spark Ads and whitelisting setup)
+- Who for: DTC skincare, cosmetics and beauty brands, from brands new to seeding to brands running 100+ creator posts a month in-house
 - Platforms: Instagram, TikTok, YouTube
 - Founder: ${SITE.founder.name} (${SITE.founder.linkedin})
 - Team: ${SITE.teamSize} people, fully remote, operating since ${SITE.foundingYear}
@@ -20,17 +20,18 @@ export function GET() {
 - Contact: ${SITE.email}
 
 ## Offer
-${TIERS.map((t) => `- ${t.name}: $${t.price.toLocaleString('en-US')}/month for ${t.posts} creator posts (management cost ${t.perPost} per post). Best for: ${t.bestFor}`).join('\n')}
-- Starts with a 60-day pilot, then month to month
-- Guarantee: the tier's monthly post count is live by day 60, or month three is free
-- First creator posts usually go live within 21 days
-- The brand ships gifted product from its own warehouse; on paid collabs the brand pays creators directly
+Plans start from ${PRICE_FROM} a month. Exact pricing is quoted on a ${SITE.callLength} walkthrough.
+${TIERS.map((t) => `- ${t.name}: ${t.posts} guaranteed creator posts a month, ${t.ugc} UGC assets with usage rights for ads, ${t.spark.toLowerCase()}, ${t.calls.toLowerCase()}, ${t.reporting.toLowerCase()}. Best for: ${t.bestFor}`).join('\n')}
+- Every plan starts with a 60-day pilot, then runs month to month. Prepaying 3 months saves 10%.
+- Guarantees: first creator posts live within 21 days; the plan's monthly post count is hit by day 60 (counted from when the brand ships product), or the team keeps working at no charge until it is
+- The brand ships gifted product from its own warehouse, pays its own Spark Ads spend, and pays creators directly on paid collabs
+- Add-ons: ${ADDONS.map((a) => a.name.toLowerCase()).join(', ')}
 - Method: confirm-first seeding. No creator receives product until they confirm.
 
 ## Pages
-- [Home](${u}/): outcome, how it works, proof, pricing overview, guarantee, FAQ
-- [Orbit Seeding Engine: pricing and process](${u}/creator-seeding): tiers, what's included, 60-day timeline, guarantee, comparison, FAQ
-- [Case studies](${u}/case-studies): three Esther Formula stories
+- [Home](${u}/): outcome, how it works, proof, plans overview, guarantee, FAQ
+- [Orbit Seeding Engine: plans and process](${u}/creator-seeding): plans, what's included, 60-day timeline, guarantees, comparison, FAQ
+- [Case studies](${u}/case-studies): the Esther Formula program
 - [About](${u}/about): point of view, founder, operating rules, team
 - [Book a walkthrough](${u}/book): ${SITE.callLength} call, see the live tracker
 - [Free Competitor Creator Audit](${u}/competitor-audit): free audit of the creators posting for a brand's top 3 competitors

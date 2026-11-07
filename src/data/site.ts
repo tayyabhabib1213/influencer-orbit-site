@@ -4,7 +4,7 @@
 export const SITE = {
   name: 'Influencer Orbit',
   url: 'https://influencerorbit.com',
-  tagline: 'The creator seeding operation for beauty brands',
+  tagline: 'Creator seeding for DTC beauty brands. Your best creator posts become ads.',
   email: 'tayyab@influencerorbit.com',
   founder: {
     name: 'Tayyab Habib',
@@ -53,14 +53,42 @@ export const PENDING = {
   // 2 to 3 sentences in your own words for the About page
   founderStory: '',
   // set to true once the "100-Post Month" PDF is attached to the MailerLite email
-  playbookReady: false
+  playbookReady: false,
+  // Esther Formula video testimonial: put the file in public/videos/ and fill this in
+  // e.g. { src: '/videos/esther-testimonial.mp4', poster: '/images/esther-video-poster.jpg', name: 'Name', title: 'Role' }
+  estherVideo: null as null | { src: string; poster: string; name: string; title: string }
 };
 
-// Pricing tiers (also used for Service schema).
-export const TIERS = [
-  { id: 'launch', name: 'Launch', price: 1500, posts: '50+', perPost: 'about $30', bestFor: 'Founder-run brands moving off manual gifting' },
-  { id: 'growth', name: 'Growth', price: 2500, posts: '100+', perPost: 'about $25', bestFor: 'Brands ready to own TikTok search in their niche', popular: true },
-  { id: 'scale', name: 'Scale', price: 3500, posts: '150+, plus paid collab management', perPost: 'about $23', bestFor: 'Brands replacing or extending a coordinator' }
+// Plans. Prices are not shown on the site except the single "from" price;
+// each plan's button leads to a call where the quote is given.
+export const PRICE_FROM = '$499';
+
+export type Tier = {
+  id: string; name: string; tagline: string; bestFor: string; posts: string; ugc: string;
+  spark: string; calls: string; reporting: string; popular?: boolean; custom?: boolean; cta: string;
+};
+
+export const TIERS: Tier[] = [
+  { id: 'liftoff', name: 'Liftoff', tagline: 'Start seeding the right way', bestFor: 'Brands new to influencer seeding', posts: '12', ugc: '4', spark: 'Top 2 posts flagged, with Spark Ads codes', calls: 'Kickoff call', reporting: 'Monthly summary', cta: 'Get Liftoff pricing' },
+  { id: 'orbit', name: 'Orbit', tagline: 'A steady creator engine', bestFor: 'Growing DTC brands doing $500K to $3M a year', posts: '50', ugc: '15', spark: 'Top 5 posts, Spark Ads codes secured and set up', calls: 'Monthly strategy call', reporting: 'Monthly report with top creators', popular: true, cta: 'Get Orbit pricing' },
+  { id: 'galaxy', name: 'Galaxy', tagline: 'Volume plus a full ad pipeline', bestFor: 'Brands at $3M+ a year, or running seeding in-house', posts: '100+', ugc: '30+', spark: 'Top 10 posts, codes plus whitelisting on TikTok and Meta', calls: 'Strategy call every two weeks', reporting: 'Creator-level results every two weeks', cta: 'Get Galaxy pricing' },
+  { id: 'mission-control', name: 'Mission Control', tagline: 'Built around your brand', bestFor: 'Brands that need 150+ posts a month or several markets', posts: '150+', ugc: '45+', spark: 'Every strong post, run as a continuous ad pipeline', calls: 'Weekly call with a dedicated lead', reporting: 'Custom dashboard', custom: true, cta: 'Talk to us' }
+];
+
+// What every plan includes.
+export const INCLUDED_ALL = [
+  'Competitor Creator Audit and a brief you approve',
+  'Creator research and hand vetting',
+  'Outreach, negotiation and confirmation before shipping',
+  'Shipping coordination with your warehouse',
+  'Follow-up until every post is live',
+  'Live shared tracker you own'
+];
+
+export const ADDONS = [
+  { name: 'Paid creator collab management', text: 'We source, negotiate and manage paid creators. Priced as a share of your creator budget.' },
+  { name: 'Extra creator posts', text: 'Add posts in blocks of 25 for launches, holidays or new markets.' },
+  { name: 'Extra UGC assets', text: 'More creator videos with usage rights for your ad account, per asset.' }
 ];
 
 // Form endpoints. All three post to the PHP handler on Hostinger (public/api/lead.php),
@@ -81,15 +109,15 @@ export const ANALYTICS = {
 };
 
 export const NAV = [
-  { label: 'How it works', href: '/creator-seeding#how-it-works' },
+  { label: 'How it works', href: '/creator-seeding' },
   { label: 'Pricing', href: '/creator-seeding#pricing' },
-  { label: 'Case studies', href: '/case-studies' },
+  { label: 'Case study', href: '/case-studies' },
   { label: 'About', href: '/about' },
-  { label: 'Free Competitor Audit', href: '/competitor-audit' }
+  { label: 'Free audit', href: '/competitor-audit' }
 ];
 
 export const CTA = {
   primary: `Book a ${SITE.callLength} walkthrough`,
   secondary: 'Get your free Competitor Creator Audit',
-  microcopy: 'See the live tracker before you commit to anything.'
+  microcopy: 'See the live tracker and a real monthly report before you commit to anything.'
 };

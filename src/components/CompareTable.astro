@@ -1,0 +1,30 @@
+---
+import Icon from './Icon.astro';
+import { HOME_COMPARE } from '../data/content';
+interface Props { labelledby: string }
+const { labelledby } = Astro.props;
+---
+<div class="compare-wrap" tabindex="0" role="region" aria-labelledby={labelledby}>
+  <table class="compare">
+    <thead>
+      <tr>
+        <th scope="col"><span class="sr-only">Feature</span></th>
+        {HOME_COMPARE.cols.map((c, i) => <th scope="col" class={i === 0 ? 'is-us' : ''}>{i === 0 ? <img src="/images/brand/logo-primary.svg" width="170" height="24" alt="Influencer Orbit" /> : c}</th>)}
+      </tr>
+    </thead>
+    <tbody>
+      {HOME_COMPARE.rows.map((r) => (
+        <tr>
+          <th scope="row">{r.label}</th>
+          {r.cells.map((c, i) => (
+            <td class={i === 0 ? 'is-us' : ''}>
+              {c === true ? <span class="mark mark--yes"><Icon name="circle-check" label="Yes" /></span>
+                : c === false ? <span class="mark mark--no"><Icon name="circle-x" label="No" /></span>
+                : <span class={`mark ${i === 0 ? 'mark--yes' : ''}`}>{i === 0 && <Icon name="check" />}{c}</span>}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

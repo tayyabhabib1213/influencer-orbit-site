@@ -30,7 +30,7 @@ const jsonld = [organization(), website(), ...schema];
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex, follow" />}
-  <meta name="theme-color" content="#092D92" />
+  <meta name="theme-color" content="#0B3AA6" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={SITE.name} />
@@ -50,7 +50,7 @@ const jsonld = [organization(), website(), ...schema];
   <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="manifest" href="/site.webmanifest" />
-  <link rel="preload" href="/fonts/bricolage-grotesque-latin-var.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/fonts/urbanist-latin-var.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/fonts/inter-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin />
 
   {jsonld.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} />)}

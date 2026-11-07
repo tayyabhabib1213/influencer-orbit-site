@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHead from '../components/SectionHead.astro';
 import { FORMS, PENDING, estherMonths } from '../data/site';
 import { breadcrumb } from '../data/schema';
 const months = estherMonths();
@@ -16,39 +17,40 @@ const gets = [
 ---
 <BaseLayout
   title="Free Competitor Creator Audit for Beauty Brands"
-  description="See which creators post for your top 3 competitors, which hooks win, and your TikTok search gap. Free for US beauty brands doing $500K+."
+  description="See which creators post for your top 3 competitors, which hooks win, and your TikTok search gap. Free for DTC beauty brands."
   path="/competitor-audit"
   schema={[breadcrumb(crumbs)]}
 >
   <section class="page-hero">
     <div class="container">
-      <div class="page-hero__head">
         <Breadcrumbs items={crumbs} />
         <p class="eyebrow">Free Competitor Creator Audit</p>
-        <h1 class="display-xl">See exactly which creators are posting for <em>your top 3 competitors.</em></h1>
-        <p class="lead">We’ll map the creators, hooks and formats winning in your category on TikTok and Instagram, and show you the gap between your brand and theirs. Free, for US beauty brands doing $500K+ a year.</p>
-      </div>
-      <div class="split split--top audit-body">
+        <h1 class="h-hero">See which creators post for <em>your top 3 competitors</em>.</h1>
+        <p class="lead">We’ll map the creators, hooks and formats winning in your category on TikTok and Instagram, and show you the gap between your brand and theirs. Free, with no call required.</p>
+    </div>
+  </section>
+  <section class="section section--tight">
+    <div class="container">
+      <div class="split split--wide-left">
       <div>
-        <h2 class="heading-sm mb-6">What you get</h2>
-        <ul class="checks">
-          {gets.map(([icon, t, d]) => (<li><Icon name={icon} /><span><strong>{t}:</strong> {d}</span></li>))}
+        <h2 class="h-lg" style="margin-bottom:24px">What you <em>get</em></h2>
+        <ul class="list-points">
+          {gets.map(([icon, t, d]) => (<li><span class="icon-dot icon-dot--soft"><Icon name={icon} /></span><div><b>{t}</b><span>{d}</span></div></li>))}
         </ul>
-        <p class="muted">Delivery: within 5 business days.</p>
       </div>
-      <div class="form-card" id="audit-form">
-        <h2 class="heading-sm mb-6">Get my free audit</h2>
+      <div class="panel" id="audit-form">
+        <h2>Get my free audit</h2><p class="muted" style="margin-bottom:20px">Delivered within 5 business days.</p>
         <form class="form" action={FORMS.audit} method="post" data-form="audit" data-success="audit-success">
           <div class="field"><label for="a-name">Name</label><input id="a-name" name="fields[name]" type="text" autocomplete="name" required /></div>
           <div class="field"><label for="a-email">Work email</label><input id="a-email" name="fields[email]" type="email" autocomplete="email" required /></div>
           <div class="field"><label for="a-brand">Brand website or TikTok handle</label><input id="a-brand" name="fields[website]" type="text" required /></div>
           <div class="field"><label for="a-comp">Your 3 closest competitors <span class="hint">(leave blank and we’ll pick)</span></label><input id="a-comp" name="fields[competitors]" type="text" /></div>
           <div class="field"><label for="a-rev">Annual revenue</label>
-            <select id="a-rev" name="fields[revenue]" required><option value="">Select</option><option>Under $500K</option><option>$500K–$2M</option><option>$2M–$10M</option><option>$10M+</option></select></div>
+            <select id="a-rev" name="fields[revenue]" required><option value="">Select</option><option>Under $500K</option><option>$500K to $3M</option><option>$3M to $10M</option><option>$10M+</option></select></div>
           <div class="hp" aria-hidden="true"><label for="a-hp">Leave this empty</label><input id="a-hp" name="company_url" type="text" tabindex="-1" autocomplete="off" /></div>
           <input type="hidden" name="form" value="audit" /><input type="hidden" name="ts" value="" />
           <button class="btn btn--primary btn--block" type="submit">Get my free audit</button>
-          <p class="form-note">No call required to receive it. US skincare, cosmetics and beauty brands only.</p>
+          <p class="form-note">No call required to receive it. DTC skincare, cosmetics and beauty brands only.</p>
         </form>
         <div class="form-success" id="audit-success" tabindex="-1" role="status">
           <h3>Your audit is underway.</h3>
@@ -59,14 +61,11 @@ const gets = [
     </div>
   </section>
 
-  <section class="section section--white" aria-labelledby="why-title">
+  <section class="section section--soft" aria-labelledby="why-title">
     <div class="container">
-      <div class="section-head">
-        <h2 id="why-title" class="display-lg">Why it’s <em>free</em></h2>
-      </div>
-      <div class="prose prose--center">
-        <p>It’s the first five days of our paid process. We’d rather show you how we think than tell you. If you like what you see, the audit becomes your creator brief on day one.</p>
-        <div class="chipline mt-6"><span><span data-months>{months}</span> months</span><span>2,000+ creator collaborations</span><span>50–200 posts a month for Esther Formula</span></div>
+      <SectionHead id="why-title" eyebrow="Why it’s free" title="It’s the first five days of <em>our paid process</em>." lead="We’d rather show you how we think than tell you. If you like what you see, the audit becomes your creator brief on day one." />
+      <div>
+        <div class="chipline"><span><span data-months>{months}</span> months</span><span>2,000+ creator collaborations</span><span>50 to 200 posts a month for Esther Formula</span></div>
       </div>
     </div>
   </section>
@@ -74,10 +73,10 @@ const gets = [
   {PENDING.playbookReady && (
   <section class="section" aria-labelledby="pdf-title">
     <div class="container">
-      <div class="proof-card">
+      <div class="panel split">
         <div>
           <p class="eyebrow">Not ready to share your brand?</p>
-          <h2 id="pdf-title" class="display-lg">The 100-Post Month: <em>a seeding playbook for beauty brands</em></h2>
+          <h2 id="pdf-title" class="h-xl">The 100-Post Month: <em>a seeding playbook for beauty brands</em></h2>
           <p class="mt-6">A free PDF covering the confirm-first method, a post-rate tracker template and the cost-per-post math.</p>
         </div>
         <div>

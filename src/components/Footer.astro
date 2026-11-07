@@ -6,10 +6,10 @@ const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
   <div class="container">
-    <section class="footer-news" aria-labelledby="news-title">
+    <section class="footer-news" id="newsletter" aria-labelledby="news-title">
       <div class="footer-news__copy">
         <p class="footer-news__eyebrow">Newsletter</p>
-        <h2 id="news-title">The Seeding Report</h2>
+        <h2 id="news-title">The <em>Seeding</em> Report</h2>
         <p>One short email a month for beauty founders: what’s working in creator seeding, cost per post math, and plays you can copy. Unsubscribe any time.</p>
       </div>
       <div class="footer-news__form">
@@ -32,15 +32,15 @@ const year = new Date().getFullYear();
     <div class="footer-top">
       <div class="footer-brand">
         <img src="/images/brand/logo-primary-reversed.svg" width="190" height="27" alt="Influencer Orbit" loading="lazy" />
-        <p>The creator seeding operation that gets US beauty brands 50 to 150+ confirmed creator posts every month, without hiring a team.</p>
-        <a class="btn btn--on-dark" href="/book" data-cta="footer"><Icon name="calendar" />{CTA.primary}</a>
+        <p>Creator seeding for DTC skincare, cosmetics and beauty brands. Guaranteed creator posts every month, and your best ones become ads.</p>
+        <a class="btn btn--on-dark btn--sm" href="/book" data-cta="footer"><Icon name="calendar" />{CTA.primary}</a>
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h2 id="f-explore">Explore</h2>
         <ul>
-          <li><a href="/creator-seeding">Seeding Engine</a></li>
+          <li><a href="/creator-seeding">How it works</a></li>
           <li><a href="/creator-seeding#pricing">Pricing</a></li>
-          <li><a href="/case-studies">Case studies</a></li>
+          <li><a href="/case-studies">Case study</a></li>
           <li><a href="/about">About</a></li>
         </ul>
       </nav>
@@ -49,6 +49,7 @@ const year = new Date().getFullYear();
         <ul>
           <li><a href="/book">Book a walkthrough</a></li>
           <li><a href="/competitor-audit">Free Competitor Audit</a></li>
+          <li><a href="#newsletter">The Seeding Report</a></li>
         </ul>
       </nav>
       <div class="footer-col footer-col--contact">

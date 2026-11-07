@@ -1,13 +1,18 @@
 ---
 import CtaButtons from './CtaButtons.astro';
+import { CREATORS } from '../data/content';
 interface Props { title: string; text?: string; micro?: string | false; secondary?: boolean; secondaryLabel?: string; primaryLabel?: string }
 const { title, text, micro, secondary = true, secondaryLabel, primaryLabel } = Astro.props;
+const faces = CREATORS.slice(0, 5);
 ---
-<section class="section" aria-labelledby="final-cta-title">
+<section class="section final" aria-labelledby="final-cta-title">
   <div class="container">
-    <div class="final-cta reveal">
-      <svg class="final-cta__orbit" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#D8E8FF" stroke-width="1.2"><ellipse cx="200" cy="200" rx="190" ry="70" transform="rotate(-20 200 200)"/><ellipse cx="200" cy="200" rx="140" ry="50" transform="rotate(-20 200 200)"/></g></svg>
-      <h2 id="final-cta-title" class="display-lg" set:html={title} />
+    <div class="band on-dark reveal">
+      <svg class="band__orbit" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#BCD3FF" stroke-width="1.2"><ellipse cx="200" cy="200" rx="190" ry="70" transform="rotate(-20 200 200)"/><ellipse cx="200" cy="200" rx="140" ry="50" transform="rotate(-20 200 200)"/><circle cx="200" cy="200" r="34" fill="#2C66DD" stroke="none" opacity=".6"/></g></svg>
+      <div class="final__avatars" aria-hidden="true">
+        {faces.map((c) => <img src={`/images/creators/${c.file}-320.webp`} width="46" height="46" alt="" loading="lazy" />)}
+      </div>
+      <h2 id="final-cta-title" class="h-xl" set:html={title} />
       {text && <p>{text}</p>}
       <div class="mt-8"><CtaButtons dark secondary={secondary} micro={micro} secondaryLabel={secondaryLabel} primaryLabel={primaryLabel} /></div>
     </div>

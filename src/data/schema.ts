@@ -1,5 +1,5 @@
 // JSON-LD builders. Every page passes the blocks it needs to BaseLayout.
-import { SITE, TIERS, PROOF } from './site';
+import { SITE, TIERS, PROOF, PRICE_FROM } from './site';
 import { fill, type Faq } from './content';
 
 const ORG_ID = `${SITE.url}/#organization`;
@@ -7,15 +7,15 @@ const PERSON_ID = `${SITE.url}/#founder`;
 const SITE_ID = `${SITE.url}/#website`;
 
 export const ABOUT_FACT =
-  `Influencer Orbit is a creator seeding operation for US DTC skincare, cosmetics and beauty brands. ` +
-  `Founded by ${SITE.founder.name}, it runs confirm-first gifted product seeding, UGC for ads, paid creator collabs and Spark Ads setup ` +
+  `Influencer Orbit is a creator seeding agency for DTC skincare, cosmetics and beauty brands. ` +
+  `Founded by ${SITE.founder.name}, it runs confirm-first gifted product seeding, UGC with usage rights for ads, paid creator collabs and Spark Ads setup ` +
   `on Instagram, TikTok and YouTube. A ${SITE.teamSize}-person remote team has run ${PROOF.collaborations} creator collaborations (${PROOF.totalPosts} posts live for one brand since January 2024) ` +
   `and coordinates ${PROOF.shipmentsPerMonth} product shipments a month, with clients across the US, UK and EU and creators across ${PROOF.creatorMarkets}. ` +
   `Its confirm-first method gets ${PROOF.postRate} of gifted creators to post, against ${PROOF.coldGiftingPostRate} for typical cold gifting.`;
 
 // Short version for the footer of every page (same wording everywhere).
 export const ABOUT_SHORT =
-  `Influencer Orbit is a creator seeding operation for US DTC skincare, cosmetics and beauty brands, founded by ${SITE.founder.name}. ` +
+  `Influencer Orbit is a creator seeding agency for DTC skincare, cosmetics and beauty brands, founded by ${SITE.founder.name}. ` +
   `It runs confirm-first gifted seeding, UGC for ads, paid creator collabs and Spark Ads on Instagram, TikTok and YouTube.`;
 
 export function organization() {
@@ -34,7 +34,7 @@ export function organization() {
     numberOfEmployees: { '@type': 'QuantitativeValue', value: SITE.teamSize },
     areaServed: SITE.areaServed.map((name) => ({ '@type': 'Place', name })),
     knowsAbout: ['Influencer marketing', 'Product seeding', 'Gifted influencer campaigns', 'UGC for ads', 'TikTok Spark Ads', 'Beauty and skincare marketing'],
-    priceRange: '$1,500 to $3,500 per month',
+    priceRange: `From ${PRICE_FROM} per month`,
     sameAs: [SITE.social.instagram, SITE.social.linkedin],
     contactPoint: { '@type': 'ContactPoint', contactType: 'sales', email: SITE.email, availableLanguage: ['English'] }
   };
@@ -67,24 +67,34 @@ export function person() {
 }
 
 export function services() {
-  return TIERS.map((t) => ({
+  return [{
     '@context': 'https://schema.org',
     '@type': 'Service',
-    '@id': `${SITE.url}/creator-seeding#${t.id}`,
-    name: `Orbit Seeding Engine: ${t.name}`,
+    '@id': `${SITE.url}/creator-seeding#service`,
+    name: 'Orbit Seeding Engine',
     serviceType: 'Creator seeding and influencer marketing',
-    description: `${t.posts} confirmed creator posts a month for US skincare, cosmetics and beauty brands. Starts with a 60-day pilot, then month to month. Post count guaranteed by day 60.`,
+    description: 'Done-for-you creator seeding for DTC skincare, cosmetics and beauty brands: confirmed creator posts every month, UGC with usage rights for ads, and Spark Ads setup. Every plan starts with a 60-day pilot, then runs month to month.',
     provider: { '@id': ORG_ID },
     areaServed: { '@type': 'Country', name: 'United States' },
     audience: { '@type': 'BusinessAudience', audienceType: 'DTC skincare, cosmetics and beauty brands' },
     offers: {
-      '@type': 'Offer',
-      price: t.price,
+      '@type': 'AggregateOffer',
+      lowPrice: Number(PRICE_FROM.replace(/[^0-9]/g, '')),
       priceCurrency: 'USD',
-      priceSpecification: { '@type': 'UnitPriceSpecification', price: t.price, priceCurrency: 'USD', unitText: 'MONTH' },
+      offerCount: TIERS.length,
       url: `${SITE.url}/creator-seeding#pricing`
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Orbit Seeding Engine plans',
+      itemListElement: TIERS.map((t) => ({
+        '@type': 'Offer',
+        name: t.name,
+        description: `${t.posts} guaranteed creator posts a month and ${t.ugc} UGC assets with usage rights. Best for: ${t.bestFor}.`,
+        url: `${SITE.url}/creator-seeding#${t.id}`
+      }))
     }
-  }));
+  }];
 }
 
 export function faqPage(faqs: Faq[]) {

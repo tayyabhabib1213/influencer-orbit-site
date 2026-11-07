@@ -5,7 +5,7 @@ const path = Astro.url.pathname.replace(/\.html$/, '').replace(/\/$/, '') || '/'
 const isCurrent = (href: string) => !href.includes('#') && href === path;
 ---
 <div class="announce">
-  <span class="announce__lead">Your competitor’s TikTok isn’t an accident.</span> <a href="/case-studies">See how we run 50 to 200 creator posts a month →</a>
+  <span class="announce__lead">2,483 creator posts live for one beauty brand since January 2024.</span> <a href="/case-studies">See the case study →</a>
 </div>
 <header class="site-header" data-header>
   <div class="container site-header__bar">
@@ -17,7 +17,7 @@ const isCurrent = (href: string) => !href.includes('#') && href === path;
         {NAV.map((n) => (<li><a href={n.href} aria-current={isCurrent(n.href) ? 'page' : undefined}>{n.label}</a></li>))}
       </ul>
     </nav>
-    <a class="btn btn--primary btn--sm site-header__cta" href="/book" data-cta="header"><Icon name="calendar" />{CTA.primary}</a>
+    <a class="btn btn--primary btn--sm site-header__cta" href="/book" data-cta="header"><Icon name="calendar" />Book a call</a>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" data-menu-toggle>
       <span class="sr-only">Menu</span><Icon name="menu" />
     </button>

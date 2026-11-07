@@ -1,70 +1,56 @@
-/* Influencer Orbit design tokens. Mirrors the "Influencer Orbit" design system (tokens.json). */
-@font-face { font-family: 'Bricolage Grotesque'; src: url('/fonts/bricolage-grotesque-latin-var.woff2') format('woff2-variations'), url('/fonts/bricolage-grotesque-latin-var.woff2') format('woff2'); font-weight: 200 800; font-style: normal; font-display: swap; }
+/* Influencer Orbit design tokens (v2: matches the LinkedIn banner and Featured images) */
+@font-face { font-family: 'Urbanist'; src: url('/fonts/urbanist-latin-var.woff2') format('woff2-variations'), url('/fonts/urbanist-latin-var.woff2') format('woff2'); font-weight: 100 900; font-style: normal; font-display: swap; }
+@font-face { font-family: 'Gloock'; src: url('/fonts/gloock-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Inter'; src: url('/fonts/inter-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Inter'; src: url('/fonts/inter-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Inter'; src: url('/fonts/inter-latin-600-normal.woff2') format('woff2'); font-weight: 600; font-style: normal; font-display: swap; }
 @font-face { font-family: 'Inter'; src: url('/fonts/inter-latin-700-normal.woff2') format('woff2'); font-weight: 700; font-style: normal; font-display: swap; }
-@font-face { font-family: 'DM Mono'; src: url('/fonts/dm-mono-latin-400-normal.woff2') format('woff2'); font-weight: 400; font-style: normal; font-display: swap; }
-@font-face { font-family: 'DM Mono'; src: url('/fonts/dm-mono-latin-500-normal.woff2') format('woff2'); font-weight: 500; font-style: normal; font-display: swap; }
 
 :root {
-  /* Colour */
-  --brand-navy: #092D92;
-  --brand-navy-hover: #07247A;
-  --brand-ink: #0B1533;
-  --surface-page: #F7F9FC;
-  --surface-card: #FFFFFF;
-  --surface-tint: #D8E8FF;
-  --surface-tint-soft: #EEF4FF;
-  --text-strong: #010306;
-  --text-muted: #4A5568;
-  --text-on-dark: #FFFFFF;
-  --text-on-dark-muted: #B8C4E0;
-  --border-hairline: #DCE3EE;
-  --border-control: #6B7A99;
-  --signal-orange: #FF5C35;
-  --signal-orange-tint: #FFE8E0;
-  --signal-orange-text: #B33A12;
-  --focus-ring: #FF5C35;
+  /* Brand */
+  --blue: #0B3AA6;
+  --blue-hover: #082D85;
+  --blue-bright: #2C66DD;
+  --blue-grad: linear-gradient(90deg, #0B3AA6 0%, #2C66DD 100%);
+  --ink: #0A1330;
+  --ink-2: #121D45;
+  --orange: #FF5C35;
+
+  /* Surfaces */
+  --bg: #FFFFFF;
+  --bg-soft: #F5F8FF;
+  --bg-tint: #EAF1FF;
+  --bg-tint-2: #D8E6FF;
+  --line: #E3E9F5;
+  --line-strong: #C9D5EE;
+
+  /* Text */
+  --text: #0B0F1A;
+  --text-2: #29334A;
+  --muted: #4A5568;
+  --on-dark: #FFFFFF;
+  --on-dark-muted: #B8C4E0;
 
   /* Type */
-  --font-display: 'Bricolage Grotesque', Inter, system-ui, sans-serif;
-  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --font-mono: 'DM Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-display: 'Urbanist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-serif: 'Gloock', Georgia, 'Times New Roman', serif;
+  --font-body: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
 
-  /* Spacing */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-6: 24px;
-  --space-8: 32px;
-  --space-12: 48px;
-  --space-16: 64px;
-  --space-24: 96px;
-  --space-32: 128px;
-
-  /* Radius */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 32px;
-  --radius-pill: 999px;
-
-  /* Shadow */
-  --shadow-card: 0 1px 2px rgba(9, 45, 146, 0.06), 0 8px 24px rgba(9, 45, 146, 0.08);
-  --shadow-raised: 0 2px 4px rgba(9, 45, 146, 0.08), 0 16px 40px rgba(9, 45, 146, 0.14);
+  /* Shape */
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(11, 58, 166, 0.06), 0 2px 8px rgba(11, 58, 166, 0.05);
+  --shadow-md: 0 2px 4px rgba(11, 58, 166, 0.05), 0 12px 32px rgba(11, 58, 166, 0.10);
+  --shadow-lg: 0 4px 10px rgba(11, 58, 166, 0.08), 0 30px 70px rgba(11, 58, 166, 0.20);
 
   /* Layout */
-  --container: 1180px;
+  --container: 1200px;
   --gutter: 20px;
-  --section-y: 72px;
-  --head-gap: 40px;
+  --section-y: 80px;
+  --focus: #FF5C35;
 }
-
-@media (min-width: 768px) {
-  :root { --gutter: 32px; --section-y: 96px; --head-gap: 48px; }
-}
-@media (min-width: 1200px) {
-  :root { --gutter: 40px; --section-y: 112px; --head-gap: 56px; }
-}
+@media (min-width: 768px) { :root { --gutter: 32px; --section-y: 104px; } }
+@media (min-width: 1200px) { :root { --gutter: 40px; --section-y: 120px; } }

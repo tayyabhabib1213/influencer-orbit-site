@@ -6,6 +6,7 @@ import CreatorGrid from '../components/CreatorGrid.astro';
 import Tracker from '../components/Tracker.astro';
 import Faq from '../components/Faq.astro';
 import FinalCta from '../components/FinalCta.astro';
+import SectionHead from '../components/SectionHead.astro';
 import { SITE, CTA, PROOF, PENDING, estherMonths } from '../data/site';
 import { CASE_FAQS } from '../data/content';
 import { breadcrumb, faqPage, article } from '../data/schema';
@@ -32,24 +33,24 @@ const art = article({
     <div class="container">
       <Breadcrumbs items={crumbs} />
       <p class="eyebrow">Case studies</p>
-      <h1 class="display-xl">One beauty brand. <span data-months>{months}</span> months. <em>2,000+ creator collaborations.</em></h1>
-      <p class="lead">We kept our proof deep, not wide. Here’s what running one brand’s creator seeding operation every month since January 2024 looks like, told as the three problems it solved.</p>
+      <h1 class="h-hero">One beauty brand. <span data-months>{months}</span> months. <em>2,000+ creator collaborations.</em></h1>
+      <p class="lead">We keep our proof deep, not wide. Here’s what running one brand’s creator seeding operation every month since January 2024 looks like, told as the three problems it solved.</p>
       <div class="chipline">
-        <span><span data-months>{months}</span> months</span><span>2,000+ collaborations</span><span>{PROOF.totalPosts} posts live</span><span>50–200 posts/month</span><span>200+ shipments/month</span><span>70%+ post rate</span><span>0 influencer managers hired</span>
+        <span><span data-months>{months}</span> months</span><span>2,000+ collaborations</span><span>{PROOF.totalPosts} posts live</span><span>50 to 200 posts a month</span><span>200+ shipments a month</span><span>70%+ post rate</span><span>0 influencer managers hired</span>
       </div>
       <p class="story__byline">By {SITE.founder.name}, Founder · Client: Esther Formula, Korean skincare and beauty supplements · Creators across the US, Southeast Asia, the UK, Australia and the UAE</p>
     </div>
   </section>
 
-  <section class="section section--white" aria-label="Case studies">
-    <div class="container stack">
-      <img src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" style="width:200px" loading="lazy" />
+  <section class="section section--tight" aria-label="Case studies">
+    <div class="container">
+      <img src="/images/brand/esther-formula-logo.webp" width="869" height="96" alt="Esther Formula" style="width:200px;margin:0 auto 32px" loading="lazy" />
 
       <details class="story" open>
         <summary>
           <span class="story__num">War story 1</span>
           <h2 class="story__title">The boxes that never posted: how one rule fixed Esther Formula’s post rate.</h2>
-          <span class="chipline"><span>Confirm-first since Jan 2024</span><span>70%+ post rate vs 30–50% cold gifting</span></span>
+          <span class="chipline"><span>Confirm-first since Jan 2024</span><span>70%+ post rate vs 30% to 50% cold gifting</span></span>
           <span class="story__toggle"><span class="when-closed">Read the story</span><span class="when-open">Close</span><Icon name="chevron-down" /></span>
         </summary>
         <div class="story__body">
@@ -84,7 +85,7 @@ const art = article({
             <p>{PROOF.totalPosts} creator posts live from 2,000+ creator collaborations, with 200+ coordinated shipments a month, month after month since January 2024. Esther Formula has never hired an in-house influencer manager.</p>
           </div>
           <div>
-            <div class="card card--ink"><p class="mono" style="font-size:13px;color:var(--text-on-dark-muted);margin:0">Creator posts live, Jan 2024 to today</p><p style="font:400 72px/1 var(--font-mono);letter-spacing:-.02em;color:#fff;margin:12px 0 16px">{PROOF.totalPosts}</p><ul class="checks" style="margin:0"><li><Icon name="check" /><span>2,000+ creator collaborations</span></li><li><Icon name="check" /><span>50 to 200 posts live every month</span></li><li><Icon name="check" /><span>70%+ post rate under confirm-first</span></li><li><Icon name="check" /><span>0 influencer managers hired</span></li></ul></div>
+            <div class="big-number"><p style="margin:0;font-size:14px">Creator posts live, Jan 2024 to today</p><b>{PROOF.totalPosts}</b><ul class="checks"><li><Icon name="check" /><span>2,000+ creator collaborations</span></li><li><Icon name="check" /><span>50 to 200 posts live every month</span></li><li><Icon name="check" /><span>70%+ post rate under confirm-first</span></li><li><Icon name="check" /><span>0 influencer managers hired</span></li></ul></div>
           </div>
         </div>
       </details>
@@ -115,39 +116,32 @@ const art = article({
 
   <section class="section" aria-labelledby="gallery-title">
     <div class="container">
-      <div class="section-head">
-        <h2 id="gallery-title" class="display-lg">Real creator posts <em>from the program</em></h2>
-      </div>
+      <SectionHead id="gallery-title" eyebrow="Gallery" title="Real creator posts <em>from the program</em>" />
       <CreatorGrid count={12} wide />
     </div>
   </section>
 
   {PENDING.estherTestimonial && (
-  <section class="section section--white" aria-labelledby="quote-title">
+  <section class="section section--soft" aria-labelledby="quote-title">
     <div class="container">
       <h2 id="quote-title" class="sr-only">Client testimonial</h2>
-      <blockquote class="testimonial"><p class="pull">“{PENDING.estherTestimonial.quote}”</p><footer class="small">— {PENDING.estherTestimonial.name}, {PENDING.estherTestimonial.title}, Esther Formula</footer></blockquote>
+      <blockquote class="card" style="max-width:860px;margin:0 auto"><p class="h-lg" style="color:var(--text)">“{PENDING.estherTestimonial.quote}”</p><footer class="muted mt-4">{PENDING.estherTestimonial.name}, {PENDING.estherTestimonial.title}, Esther Formula</footer></blockquote>
     </div>
   </section>
   )}
 
   <section class="section" aria-labelledby="pilot-title">
     <div class="container">
-      <div class="section-head">
-        <h2 id="pilot-title" class="display-lg">Your brand could be <em>case study #2</em>.</h2>
-        <p class="lead">We’re looking for one Shopify-native US skincare brand doing $1M to $3M a year to run the Orbit Seeding Engine as a named case study, with month-by-month post counts published. Ask about founding-client terms on the walkthrough.</p>
-      </div>
-      <div class="center-cta">
+      <SectionHead id="pilot-title" eyebrow="Founding clients" title="Your brand could be <em>case study #2</em>." lead="We’re looking for one Shopify-native skincare brand to run the Orbit Seeding Engine as a named case study, with month-by-month post counts published. Ask about founding-client terms on the walkthrough." />
+      <div class="center">
         <a class="btn btn--primary" href="/book" data-cta="pilot-slot"><Icon name="calendar" />Apply on a {SITE.callLength} walkthrough</a>
       </div>
     </div>
   </section>
 
-  <section class="section section--white" aria-labelledby="faq-title">
+  <section class="section section--soft" aria-labelledby="faq-title">
     <div class="container">
-      <div class="section-head">
-        <h2 id="faq-title" class="display-lg">Questions about the <em>Esther Formula</em> program</h2>
-      </div>
+      <SectionHead id="faq-title" eyebrow="FAQ" title="Questions about the <em>Esther Formula</em> program" />
       <Faq items={CASE_FAQS} />
     </div>
   </section>

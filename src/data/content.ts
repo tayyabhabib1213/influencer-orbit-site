@@ -45,42 +45,48 @@ import { estherMonths } from './site';
 export const fill = (t: string) => t.replace(/\{months\}/g, String(estherMonths()));
 
 export const SERVICE_FAQS: Faq[] = [
-  { q: 'Isn’t seeding just awareness? How do I measure ROI?', a: 'At three levels: posts against target (guaranteed), creator code and link sales, and Spark Ad performance. All three are in your monthly report.' },
+  { q: 'How much does it cost?', a: 'Plans start from $499 a month. Your exact price depends on the plan and your goals, and we quote it on a 20-minute walkthrough after we’ve seen your brand. Every plan starts with a 60-day pilot, then runs month to month. Prepay three months and save 10%.' },
+  { q: 'Isn’t seeding just awareness? How do I measure ROI?', a: 'At three levels: posts against target (guaranteed), creator code and link sales, and the performance of the posts we turn into ads. All three are in your report.' },
+  { q: 'What are UGC assets with usage rights?', a: 'Creator videos you’re allowed to run in your own ads. Every plan includes them, equal to at least 30% of its guaranteed posts. The exact usage terms are written into your proposal before anything starts.' },
+  { q: 'What happens if you miss the post count?', a: 'First posts go live within 21 days, and your plan’s monthly post count is hit by day 60, counted from when you ship product. If we miss it, we keep working at no charge until we hit it.' },
   { q: 'You have one case study. Isn’t that thin?', a: 'It’s one brand for {months} months: 2,000+ collaborations and 50 to 200 posts every month. That proves the operation holds up month after month, which a list of one-off campaigns can’t.' },
-  { q: 'Your team is in Pakistan. How does that work on US time?', a: 'Your live tracker updates in real time, so you never wait on a status email. Our response commitment is one business day over email, Slack or WhatsApp, and it’s written into the engagement.' },
-  { q: 'A marketplace charges about $30 a post. Why pay a retainer?', a: 'Marketplace creators come from a shared opt-in pool, with no brief built for your brand, no competitor audit, no VIP roster and no Spark Ads pipeline. And you don’t own the relationships. At Growth tier you pay about $25 a post for all of it.' },
-  { q: 'We already have a coordinator. What happens to them?', a: 'We import your roster and tracker and absorb the operational load. Their creator relationships stay in place, and volume grows from where it is.' },
-  { q: 'Are your creators only in the US?', a: 'No. We serve US brands and source creators wherever your customers are. We’ve run seeding with creators across the US, Southeast Asia, the UK, Australia and the UAE.' },
-  { q: 'How much product do we need?', a: 'It depends on your tier and product cost. We size it with you on the walkthrough so you never short customer orders.' },
+  { q: 'Your team is in Pakistan. How does that work on US time?', a: 'Your live tracker updates in real time, so you never wait on a status email. We reply within one business day over email, Slack or WhatsApp, and it’s written into the engagement.' },
+  { q: 'We already have a coordinator. What happens to them?', a: 'We import your roster and tracker and take the operational load off them. Their creator relationships stay in place, and volume grows from where it is.' },
+  { q: 'Are your creators only in the US?', a: 'No. We source creators wherever your customers are, and have run seeding with creators across the US, Southeast Asia, the UK, Australia and the UAE.' },
+  { q: 'What do we handle on our side?', a: 'Three things: shipping gifted product from your own warehouse, your own Spark Ads spend, and paying creators directly on any paid collabs. We handle everything else.' },
   { q: 'Who chooses the creators?', a: 'We hand-vet them against the brief you approve. You see every confirmed creator in the tracker before anything ships.' },
   { q: 'How are posts disclosed?', a: 'Every creator is briefed to use FTC-compliant disclosure such as #gifted or #ad, or the platform’s branded-content tools.' },
-  { q: 'What if we want to leave?', a: 'After the 60-day pilot it’s month to month. You leave with every contact, content link and the tracker.' }
+  { q: 'Can we start small and upgrade?', a: 'Yes. Many brands start on Liftoff. If you move up to Orbit within 60 days, what you paid for Liftoff counts toward it.' },
+  { q: 'What if we want to leave?', a: 'After the 60-day pilot it’s month to month. You leave with every creator contact, content link and the tracker.' }
 ];
 
-// Homepage FAQ: question-led for search and AI answers (answers drawn from the copy deck).
+// Homepage FAQ: question-led for search and AI answers.
 export const HOME_FAQS: Faq[] = [
-  { q: 'How much does creator seeding cost for a skincare brand?', a: 'Influencer Orbit runs on three monthly tiers: $1,500 for 50+ creator posts, $2,500 for 100+ and $3,500 for 150+. That works out to about $23 to $30 in management cost per post. You pay product, shipping and any creator fees directly, with no markup.' },
-  { q: 'How fast do the first creator posts go live?', a: 'Outreach goes live by day 5, and first creator posts usually go live within 21 days. Your tier’s monthly post count is guaranteed by day 60, or month three is free.' },
   SERVICE_FAQS[0],
+  { q: 'How fast do the first creator posts go live?', a: 'Outreach starts within the first week, and first creator posts go live within 21 days. Your plan’s monthly post count is guaranteed by day 60, counted from when you ship product.' },
   SERVICE_FAQS[2],
+  SERVICE_FAQS[1],
+  SERVICE_FAQS[5],
   SERVICE_FAQS[8]
 ];
 
 export const CASE_FAQS: Faq[] = [
   { q: 'What does Influencer Orbit do for Esther Formula?', a: 'We run Esther Formula’s creator seeding operation end to end: creator research, hand-vetting, outreach, confirmation before shipping, shipment coordination and follow-up until every post is live. The brand approves briefs and ships product.' },
   { q: 'How long has Esther Formula worked with Influencer Orbit?', a: 'Since January 2024 ({months} months), with 50 to 200 creator posts going live every month and no in-house influencer manager hired.' },
-  { q: 'Can I see the real tracker?', a: 'Yes. On the walkthrough we open the real Esther Formula tracker (redacted) and the monthly report you would receive.' }
+  { q: 'Can I see the real tracker?', a: 'Yes. On the walkthrough we open the real Esther Formula tracker (redacted) and the report you would receive.' }
 ];
 
-// Homepage comparison: three options a founder actually weighs.
+// Comparison: us vs the two options a founder actually weighs. true = yes, false = no, string = detail.
 export const HOME_COMPARE = {
-  cols: ['Influencer Orbit', 'In-house coordinator', 'Typical agency'],
+  cols: ['Influencer Orbit', 'Typical agency or freelancer', 'In-house hire'],
   rows: [
-    ['What you pay', '$1,500 to $3,500 a month', '~$61K a year plus software', 'Retainer plus campaign fees'],
-    ['Who does the work', 'We do', 'Your hire', 'Their account team'],
-    ['Post count guaranteed', 'Yes, by day 60', 'No', 'Rarely. Reach estimates instead'],
-    ['Creators picked for your customer', 'Hand-vetted', 'Yes', 'Often from their own pool'],
-    ['You own the creator relationships', 'Yes', 'Until they leave', 'Usually not'],
-    ['Spark Ads pipeline', 'Included', 'Extra work', 'Often extra']
-  ]
+    { label: 'Post count guaranteed', cells: ['Yes, by day 60', 'Rarely. Reach estimates instead', 'No'] },
+    { label: 'Every creator confirms before you ship', cells: [true, false, 'Depends on the person'] },
+    { label: 'UGC with usage rights for your ads', cells: ['Included in every plan', 'Usually extra', 'Extra negotiation'] },
+    { label: 'Spark Ads pipeline', cells: ['Included', 'Often extra', 'Extra work'] },
+    { label: 'Creators picked for your customer', cells: ['Hand-vetted', 'Often from their own pool', true] },
+    { label: 'You own the creator relationships', cells: [true, false, 'Until they leave'] },
+    { label: 'Live tracker you can open any time', cells: [true, 'Monthly slides', 'A spreadsheet'] },
+    { label: 'Cost', cells: ['One monthly plan, from $499', 'Retainer plus campaign fees', '~$61K a year plus software'] }
+  ] as { label: string; cells: (string | boolean)[] }[]
 };

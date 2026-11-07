@@ -1,40 +1,51 @@
 ---
-// Sample tracker. Illustrative data only: keep the note visible wherever this appears.
+// Sample live tracker shown in an app window. Illustrative data only: keep the note visible.
 import Icon from './Icon.astro';
 import Brand from './Brand.astro';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
 const rows = [
   ['tiktok', '18.2K', 'live', 'Oct 03', '41.6K', 96], ['instagram', '9.7K', 'live', 'Oct 04', '12.9K', 72],
   ['tiktok', '52.4K', 'live', 'Oct 06', '88.3K', 110], ['youtube', '31.0K', 'live', 'Oct 07', '24.1K', 84],
-  ['tiktok', '6.3K', 'shipped', 'Oct 09', '—', 64], ['instagram', '14.8K', 'shipped', 'Oct 10', '—', 120],
-  ['tiktok', '23.5K', 'confirmed', 'Oct 11', '—', 90], ['instagram', '11.2K', 'confirmed', 'Oct 12', '—', 78]
+  ['tiktok', '6.3K', 'shipped', 'Oct 09', '—', 64], ['instagram', '14.8K', 'confirmed', 'Oct 10', '—', 120]
 ] as const;
+const shown = compact ? rows.slice(0, 4) : rows;
 const pill = { live: ['circle-play', 'Live'], shipped: ['truck', 'Shipped'], confirmed: ['circle-check', 'Confirmed'] } as const;
 ---
-<section class="tracker" aria-label="Sample live tracker with illustrative data">
-  <div class="tracker__bar">
-    <div class="tracker__title"><span class="tracker__dot" aria-hidden="true"></span>Live tracker <small>· sample brand · October</small></div>
-    <div class="tracker__counter"><b>64</b><span>/ 100 posts live this month</span></div>
+<div class="app-window" role="group" aria-label="Sample live tracker with illustrative data">
+  <div class="app-window__bar">
+    <div class="app-window__dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="app-window__title">Live tracker <span>· sample brand · October</span></div>
   </div>
-  <div class="tracker__progress" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" aria-label="Posts live against monthly target, sample data"><i style="width:64%"></i></div>
-  <div class="tracker__summary">
-    <div><strong>118</strong>confirmed</div><div><strong>97</strong>shipped</div><div><strong>64</strong>live</div><div><strong>1.9M</strong>views</div>
+  <div class="app-window__body">
+    <div class="tracker-head">
+      <div>
+        <div class="tracker-head__label"><span class="live-dot" aria-hidden="true"></span>Posts live this month</div>
+        <div class="tracker-head__count">64<span>/ 100 target</span></div>
+      </div>
+      <span class="pill pill--confirmed"><Icon name="shield-check" />On track for day 60</span>
+    </div>
+    <div class="tracker-progress" role="progressbar" aria-valuenow="64" aria-valuemin="0" aria-valuemax="100" aria-label="64 of 100 posts live, sample data"><i style="width:64%"></i></div>
+    <div class="tracker-kpis">
+      <div><strong>118</strong>confirmed</div><div><strong>97</strong>shipped</div><div><strong>64</strong>posts live</div><div><strong>19</strong>UGC assets</div>
+    </div>
+    <div class="tracker-table">
+      <table>
+        <thead><tr><th scope="col">Creator</th><th scope="col">Platform</th><th scope="col" class="col-followers">Followers</th><th scope="col">Status</th><th scope="col" class="col-updated">Updated</th><th scope="col" class="col-views">Views</th></tr></thead>
+        <tbody>
+          {shown.map(([p, f, s, d, v, w]) => (
+            <tr>
+              <td><div class="creator"><span class="creator__avatar"></span><span class="redact" style={`width:${w}px`}></span><span class="sr-only">Creator handle hidden</span></div></td>
+              <td><Brand name={p} /></td>
+              <td class="num col-followers">{f}</td>
+              <td><span class={`pill pill--${s}`}><Icon name={pill[s][0]} />{pill[s][1]}</span></td>
+              <td class="num col-updated">{d}</td>
+              <td class="num col-views">{v}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="tracker-note">Illustrative sample. Real client trackers are shown, redacted, on the walkthrough.</p>
   </div>
-  <div class="tracker__scroll">
-    <table>
-      <thead><tr><th scope="col">Creator</th><th scope="col">Platform</th><th scope="col" class="col-followers">Followers</th><th scope="col">Status</th><th scope="col" class="col-updated">Updated</th><th scope="col" class="col-views">Views</th></tr></thead>
-      <tbody>
-        {rows.map(([p, f, s, d, v, w]) => (
-          <tr>
-            <td><div class="creator"><span class="creator__avatar"></span><span class="redact" style={`width:${w}px`}></span><span class="sr-only">Creator handle hidden</span></div></td>
-            <td><Brand name={p} /></td>
-            <td class="num col-followers">{f}</td>
-            <td><span class={`pill pill--${s}`}><Icon name={pill[s][0]} />{pill[s][1]}</span></td>
-            <td class="num col-updated">{d}</td>
-            <td class="num col-views">{v}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>
-  <p class="tracker__note">Illustrative sample. Real client trackers are shown, redacted, on the walkthrough.</p>
-</section>
+</div>
