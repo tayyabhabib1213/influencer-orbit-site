@@ -28,3 +28,13 @@ const { labelledby } = Astro.props;
     </tbody>
   </table>
 </div>
+<div class="compare-cards" role="list" aria-label="How Influencer Orbit compares">
+  {HOME_COMPARE.rows.map((r) => (
+    <div class="compare-card" role="listitem">
+      <p class="compare-card__label">{r.label}</p>
+      <p class="compare-card__us"><Icon name="circle-check" /><span><strong>Influencer Orbit:</strong> {r.cells[0] === true ? 'Yes' : r.cells[0]}</span></p>
+      <p class="compare-card__them"><span>{HOME_COMPARE.cols[1]}:</span> {r.cells[1] === true ? 'Yes' : r.cells[1] === false ? 'No' : r.cells[1]}</p>
+      <p class="compare-card__them"><span>{HOME_COMPARE.cols[2]}:</span> {r.cells[2] === true ? 'Yes' : r.cells[2] === false ? 'No' : r.cells[2]}</p>
+    </div>
+  ))}
+</div>

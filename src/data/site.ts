@@ -16,9 +16,9 @@ export const SITE = {
     instagram: 'https://www.instagram.com/influencersorbit/',
     linkedin: 'https://www.linkedin.com/in/tayyab-habib-418a20220/'
   },
-  // Booking: the 20-minute Calendly event.
-  calendly: 'https://calendly.com/tayyabhabib1213/20min',
-  callLength: '20-minute',
+  // Booking: the 30-minute Calendly event.
+  calendly: 'https://calendly.com/tayyabhabib1213/walkthrough',
+  callLength: '30-minute',
   responseTime: 'We reply within one business day.',
   foundingYear: 2023,
   teamSize: 4,

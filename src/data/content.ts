@@ -45,7 +45,7 @@ import { estherMonths } from './site';
 export const fill = (t: string) => t.replace(/\{months\}/g, String(estherMonths()));
 
 export const SERVICE_FAQS: Faq[] = [
-  { q: 'How much does it cost?', a: 'Plans start from $499 a month. Your exact price depends on the plan and your goals, and we quote it on a 20-minute walkthrough after we’ve seen your brand. Every plan starts with a 60-day pilot, then runs month to month. Prepay three months and save 10%.' },
+  { q: 'How much does it cost?', a: 'Plans start from $499 a month. Your exact price depends on the plan and your goals, and we quote it on a 30-minute walkthrough after we’ve seen your brand. Every plan starts with a 60-day pilot, then runs month to month. Prepay three months and save 10%.' },
   { q: 'Isn’t seeding just awareness? How do I measure ROI?', a: 'At three levels: posts against target (guaranteed), creator code and link sales, and the performance of the posts we turn into ads. All three are in your report.' },
   { q: 'What are UGC assets with usage rights?', a: 'Creator videos you’re allowed to run in your own ads. Every plan includes them, equal to at least 30% of its guaranteed posts. The exact usage terms are written into your proposal before anything starts.' },
   { q: 'What happens if you miss the post count?', a: 'First posts go live within 21 days, and your plan’s monthly post count is hit by day 60, counted from when you ship product. If we miss it, we keep working at no charge until we hit it.' },

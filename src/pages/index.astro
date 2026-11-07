@@ -132,22 +132,22 @@ const floats = [CREATORS[3], CREATORS[4], CREATORS[10]];
       <ol class="steps">
         <li class="step reveal">
           <div class="step__top"><span class="step__n">1</span><span class="step__when">Days 1 to 5</span></div>
-          <h3>Map</h3>
+          <h3 data-when="Days 1 to 5">Map</h3>
           <p>A Competitor Creator Audit shows which creators post for your top 3 competitors and which hooks win. It becomes your brief.</p>
         </li>
         <li class="step reveal">
           <div class="step__top"><span class="step__n">2</span><span class="step__when">Days 5 to 21</span></div>
-          <h3>Match &amp; Ship</h3>
+          <h3 data-when="Days 5 to 21">Match &amp; Ship</h3>
           <p>We hand-vet creators for audience fit, not follower count. Each one confirms before your warehouse ships.</p>
         </li>
         <li class="step reveal">
           <div class="step__top"><span class="step__n">3</span><span class="step__when">Day 21 on</span></div>
-          <h3>Go Live</h3>
+          <h3 data-when="Day 21 on">Go Live</h3>
           <p>We follow up until every post is live, and you watch it happen in a live tracker you own.</p>
         </li>
         <li class="step reveal">
           <div class="step__top"><span class="step__n">4</span><span class="step__when">Day 30 on</span></div>
-          <h3>Amplify</h3>
+          <h3 data-when="Day 30 on">Amplify</h3>
           <p>Your best posts become Spark Ads, and top creators join your VIP Creator Roster for repeat seeding.</p>
         </li>
       </ol>
@@ -182,7 +182,7 @@ const floats = [CREATORS[3], CREATORS[4], CREATORS[10]];
       <div class="band on-dark reveal">
         <svg class="band__orbit" viewBox="0 0 400 400" aria-hidden="true"><g fill="none" stroke="#BCD3FF" stroke-width="1.2"><ellipse cx="200" cy="200" rx="190" ry="70" transform="rotate(-20 200 200)"/><ellipse cx="200" cy="200" rx="140" ry="50" transform="rotate(-20 200 200)"/></g></svg>
         <h2 id="band-title" class="h-xl">Stop shipping product into the void. <em>Start counting posts.</em></h2>
-        <p>In 20 minutes we’ll show you the live tracker, the report you’d get, and the cost-per-post math against what you spend now.</p>
+        <p>In 30 minutes we’ll show you the live tracker, the report you’d get, and the cost-per-post math against what you spend now.</p>
         <div class="mt-8"><CtaButtons dark secondary={false} micro={false} /></div>
       </div>
     </div>
@@ -192,7 +192,7 @@ const floats = [CREATORS[3], CREATORS[4], CREATORS[10]];
   <section class="section" id="plans" aria-labelledby="plans-title">
     <div class="container">
       <SectionHead id="plans-title" eyebrow="Plans" title="Pick your volume. <em>We guarantee it.</em>" lead="Four plans, each with a guaranteed monthly post count and UGC with usage rights. Every plan starts with a 60-day pilot, then runs month to month." />
-      <div class="center"><p class="from-price"><Icon name="badge-dollar-sign" />Plans from <b>{PRICE_FROM}</b>/month<span class="from-price__extra"> · exact quote on a 20-minute call</span></p></div>
+      <div class="center"><p class="from-price"><Icon name="badge-dollar-sign" />Plans from <b>{PRICE_FROM}</b>/month<span class="from-price__extra"> · exact quote on a 30-minute call</span></p></div>
       <Plans />
       <div class="pricing-note">
         <span><Icon name="shield-check" />Post count guaranteed by day 60</span>
@@ -269,7 +269,7 @@ const floats = [CREATORS[3], CREATORS[4], CREATORS[10]];
       {PENDING.estherTestimonial && (
         <blockquote class="card mt-6" style="max-width:860px;margin:0 auto 32px"><p class="h-md" style="color:var(--text)">“{PENDING.estherTestimonial.quote}”</p><footer class="muted mt-4">{PENDING.estherTestimonial.name}, {PENDING.estherTestimonial.title}, Esther Formula</footer></blockquote>
       )}
-      <div class="reviews">
+      <div class="reviews" tabindex="0" role="region" aria-label="Client reviews">
         {REVIEWS.map((r) => <ReviewCard {...r} />)}
       </div>
     </div>
@@ -343,7 +343,7 @@ const floats = [CREATORS[3], CREATORS[4], CREATORS[10]];
 
   <FinalCta
     title="Ready to see your posts <em>go live next month</em>?"
-    text="In 20 minutes we’ll show you the live tracker and the report you’d receive, then run the cost-per-post math against what you spend now."
+    text="In 30 minutes we’ll show you the live tracker and the report you’d receive, then run the cost-per-post math against what you spend now."
     secondary={false}
     micro='Not ready for a call? <a href="/competitor-audit">Get your free Competitor Creator Audit</a>.'
   />

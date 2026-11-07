@@ -106,7 +106,7 @@ const rules = [
   <section class="section" aria-labelledby="reviews-title">
     <div class="container">
       <SectionHead id="reviews-title" eyebrow="Reviews" title="On time, easy to work with, <em>worth hiring again</em>." lead="Verified reviews from clients Tayyab has worked with, quoted word for word." />
-      <div class="reviews">
+      <div class="reviews" tabindex="0" role="region" aria-label="Client reviews">
         {REVIEWS.map((r) => <ReviewCard {...r} />)}
       </div>
     </div>

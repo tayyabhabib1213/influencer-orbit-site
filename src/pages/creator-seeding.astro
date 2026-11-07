@@ -50,7 +50,7 @@ const terms = [
       <p class="eyebrow">The Orbit Seeding Engine</p>
       <h1 class="h-hero">Guaranteed creator posts. <em>Ads that come with them.</em></h1>
       <p class="lead">We run your creator seeding end to end: finding and vetting creators, confirming them before you ship, chasing every post to live, and turning the best ones into ads. You approve a brief and ship product.</p>
-      <div class="cta-group"><a class="btn btn--primary" href="/book" data-cta="services-hero"><Icon name="calendar" />Book a 20-minute walkthrough</a><a class="btn btn--secondary" href="#pricing">See the plans</a></div>
+      <div class="cta-group"><a class="btn btn--primary" href="/book" data-cta="services-hero"><Icon name="calendar" />Book a 30-minute walkthrough</a><a class="btn btn--secondary" href="#pricing">See the plans</a></div>
       <div class="chipline">
         <span><Icon name="shield-check" />Posts guaranteed by day 60</span><span><Icon name="video" />UGC with usage rights</span><span><Icon name="zap" />Spark Ads ready</span><span><Icon name="handshake" />You own every relationship</span>
       </div>
@@ -65,7 +65,7 @@ const terms = [
         {phases.map((p) => (
           <li class="step reveal">
             <div class="step__top"><span class="step__n">{p.n}</span><span class="step__when">{p.when}</span></div>
-            <h3>{p.name}</h3>
+            <h3 data-when={p.when}>{p.name}</h3>
             <p>{p.text}</p>
             <ul>{p.items.map((i) => <li><Icon name="check" /><span>{i}</span></li>)}</ul>
           </li>
@@ -102,10 +102,11 @@ const terms = [
   <!-- Pricing -->
   <section class="section section--soft" id="pricing" aria-labelledby="pricing-title">
     <div class="container">
-      <SectionHead id="pricing-title" eyebrow="Plans" title="Pick your volume. <em>We guarantee it.</em>" lead="Every plan includes UGC with usage rights equal to at least 30% of its posts. Pricing depends on your plan and goals, and we quote it on a 20-minute call." />
+      <SectionHead id="pricing-title" eyebrow="Plans" title="Pick your volume. <em>We guarantee it.</em>" lead="Every plan includes UGC with usage rights equal to at least 30% of its posts. Pricing depends on your plan and goals, and we quote it on a 30-minute call." />
       <div class="center"><p class="from-price"><Icon name="badge-dollar-sign" />Plans from <b>{PRICE_FROM}</b>/month</p></div>
       <Plans detailed />
 
+      <div class="matrix-section">
       <h3 class="h-lg center mt-12" id="matrix-title" style="margin-top:80px">Compare plans <em>side by side</em></h3>
       <div class="matrix-wrap" tabindex="0" role="region" aria-labelledby="matrix-title">
         <table class="matrix">
@@ -117,6 +118,7 @@ const terms = [
             <tr><th scope="row">Price</th>{TIERS.map((t) => <td class={t.popular ? 'is-pop' : ''}><a href="/book" data-cta={`matrix-${t.id}`}>{t.custom ? 'Custom quote' : 'Get pricing'}</a></td>)}</tr>
           </tbody>
         </table>
+      </div>
       </div>
     </div>
   </section>
@@ -186,7 +188,7 @@ const terms = [
 
   <FinalCta
     title="Get your plan and <em>your exact quote</em>."
-    text={`In 20 minutes we’ll recommend a plan, show you the live tracker, and give you a price. Plans start from ${PRICE_FROM} a month.`}
+    text={`In 30 minutes we’ll recommend a plan, show you the live tracker, and give you a price. Plans start from ${PRICE_FROM} a month.`}
     secondary={false}
     micro='Not ready for a call? <a href="/competitor-audit">Get your free Competitor Creator Audit</a>.'
   />

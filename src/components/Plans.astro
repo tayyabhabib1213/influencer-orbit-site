@@ -5,7 +5,8 @@ import { TIERS } from '../data/site';
 interface Props { detailed?: boolean }
 const { detailed = false } = Astro.props;
 ---
-<div class="plans">
+<p class="swipe-hint" aria-hidden="true"><Icon name="arrow-right" />Swipe to see all four plans</p>
+<div class="plans" tabindex="0" role="region" aria-label="Plans">
   {TIERS.map((t) => (
     <article class={`plan${t.popular ? ' plan--popular' : ''}`} id={t.id} aria-labelledby={`plan-${t.id}`}>
       {t.popular && <span class="plan__badge"><Icon name="star" />Most popular</span>}
